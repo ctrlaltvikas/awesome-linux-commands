@@ -1,0 +1,729 @@
+[
+  {
+    "id": "modern-eza",
+    "name": "eza",
+    "title": "`eza` — Next-Gen Replacement for `ls`",
+    "category": "Modern CLI",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": "ls",
+    "command": "eza -lah --icons --git --group-directories-first",
+    "description": "",
+    "tags": [
+      "rust",
+      "navigation",
+      "files",
+      "git"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "modern-bat",
+    "name": "bat",
+    "title": "`bat` — Syntax-Highlighting Replacement for `cat`",
+    "category": "Modern CLI",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": "cat",
+    "command": "bat --style=numbers,changes,grid --line-range :100 application.log",
+    "description": "",
+    "tags": [
+      "rust",
+      "viewer",
+      "syntax-highlighting",
+      "git"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "modern-ripgrep",
+    "name": "ripgrep",
+    "title": "`ripgrep` (`rg`) — Lightning-Fast Replacement for `grep`",
+    "category": "Modern CLI",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": "grep",
+    "command": "rg -i -C 3 --type-add 'cfg:*.{yaml,yml,json,toml}' -tcfg 'jwt_secret'",
+    "description": "",
+    "tags": [
+      "rust",
+      "search",
+      "regex",
+      "ultra-fast"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "modern-fd",
+    "name": "fd",
+    "title": "`fd` — Intuitive, User-Friendly Replacement for `find`",
+    "category": "Modern CLI",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": "find",
+    "command": "fd -H -E 'node_modules' -E '.git' -e log -e txt",
+    "description": "",
+    "tags": [
+      "rust",
+      "search",
+      "files",
+      "fast"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "modern-btop",
+    "name": "btop",
+    "title": "`btop` — Visual Interactive Replacement for `top` and `htop`",
+    "category": "Modern CLI",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": "top, htop",
+    "command": "btop --utf-force",
+    "description": "",
+    "tags": [
+      "c++",
+      "monitoring",
+      "cpu",
+      "memory",
+      "gpu",
+      "network"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "modern-duf",
+    "name": "duf",
+    "title": "`duf` — Visual Disk Usage Replacement for `df`",
+    "category": "Modern CLI",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": "df",
+    "command": "duf --hide-fs tmpfs,devtmpfs --sort usage",
+    "description": "",
+    "tags": [
+      "go",
+      "storage",
+      "disk",
+      "visual"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "modern-dust",
+    "name": "dust",
+    "title": "`dust` — Visual Directory Disk Usage Replacement for `du`",
+    "category": "Modern CLI",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": "du",
+    "command": "dust -d 3 -n 15 /var",
+    "description": "",
+    "tags": [
+      "rust",
+      "disk-space",
+      "tree",
+      "forensics"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "modern-procs",
+    "name": "procs",
+    "title": "`procs` — Modern Process Inspector Replacement for `ps`",
+    "category": "Modern CLI",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": "ps",
+    "command": "procs --tree --watch --interval 2 nginx",
+    "description": "",
+    "tags": [
+      "rust",
+      "process",
+      "tree",
+      "ports"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "modern-curlie",
+    "name": "curlie",
+    "title": "`curlie` / `httpie` — Human-Friendly Replacement for `curl`",
+    "category": "Modern CLI",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": "curl",
+    "command": "curlie -v POST https://api.example.com/v1/auth username=\"admin\" password=\"secret\"",
+    "description": "",
+    "tags": [
+      "go",
+      "networking",
+      "http",
+      "api"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "modern-zoxide",
+    "name": "zoxide",
+    "title": "`zoxide` (`z`) — Smart Frecency Directory Jumper Replacement for `cd`",
+    "category": "Modern CLI",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": "cd",
+    "command": "z repo",
+    "description": "",
+    "tags": [
+      "rust",
+      "navigation",
+      "productivity"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "modern-delta",
+    "name": "delta",
+    "title": "`delta` — Syntax-Highlighting Pager for `diff` & `git diff`",
+    "category": "Modern CLI",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": "diff",
+    "command": "git diff | delta --side-by-side --line-numbers",
+    "description": "",
+    "tags": [
+      "rust",
+      "git",
+      "diff",
+      "code-review"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "modern-tldr",
+    "name": "tldr",
+    "title": "`tldr` — Practical Example Cheat Sheets Replacement for `man`",
+    "category": "Modern CLI",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": "man",
+    "command": "tldr tar",
+    "description": "",
+    "tags": [
+      "community",
+      "documentation",
+      "cheatsheet"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "incident-deleted-files",
+    "name": "lsof-deleted-files",
+    "title": "Identify \"Ghost\" Deleted Files Holding 100% Disk Space",
+    "category": "Incident Response",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo lsof +L1 | sort -k 7 -nr | head -20",
+    "description": "When `df -h` shows 100% full but `du -sh /*` accounts for only 20GB, unlinked files held open by running processes are the culprit.",
+    "tags": [
+      "storage",
+      "disk-full",
+      "forensics",
+      "lsof"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/02-incident-response.md"
+  },
+  {
+    "id": "incident-io-saturation",
+    "name": "iotop-saturation",
+    "title": "Isolate Disk I/O Saturation Bottlenecks",
+    "category": "Incident Response",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo iotop -o -b -n 3 -d 1",
+    "description": "Detect which exact process and thread is thrashing disk read/write bandwidth and causing high system `iowait`.",
+    "tags": [
+      "performance",
+      "io",
+      "disk",
+      "iotop",
+      "sysadmin"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/02-incident-response.md"
+  },
+  {
+    "id": "incident-oom-killer",
+    "name": "dmesg-oom-killer",
+    "title": "Diagnose Out-Of-Memory (OOM) Killer Sacrifices",
+    "category": "Incident Response",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo dmesg -T --level=emerg,alert,crit,err | grep -i -E 'oom|killed process|out of memory'",
+    "description": "Inspect the kernel log ring buffer to determine if the Linux OOM Killer terminated critical services, complete with human-readable timestamps.",
+    "tags": [
+      "memory",
+      "oom",
+      "kernel",
+      "crash",
+      "dmesg"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/02-incident-response.md"
+  },
+  {
+    "id": "incident-port-conflict",
+    "name": "ss-port-conflict",
+    "title": "Locate Sockets & Ports Causing Address Conflicts (EADDRINUSE)",
+    "category": "Incident Response",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo ss -tulpn 'sport = :8080 or sport = :443'",
+    "description": "Pinpoint the exact PID, command name, and user holding a TCP/UDP port preventing your service from binding.",
+    "tags": [
+      "networking",
+      "ports",
+      "ss",
+      "conflicts"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/02-incident-response.md"
+  },
+  {
+    "id": "incident-zombie-hunt",
+    "name": "ps-zombie-hunt",
+    "title": "Hunt & Identify Zombie Processes and Their Parents",
+    "category": "Incident Response",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "ps -eo stat,ppid,pid,user,comm | awk '$1 ~ /^[Zz]/ {print \"Zombie PID: \" $3 \" | Parent PPID: \" $2 \" (\" $5 \")\"}'",
+    "description": "Locate zombie (`Z`) state processes and reveal the Parent PID (`PPID`) that failed to reap its child via `wait()`.",
+    "tags": [
+      "process",
+      "zombie",
+      "ppid",
+      "ps"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/02-incident-response.md"
+  },
+  {
+    "id": "incident-vmstat-load",
+    "name": "vmstat-triage",
+    "title": "Diagnose High Load Average: CPU-Bound vs I/O-Blocked",
+    "category": "Incident Response",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "vmstat -w -t 1 5",
+    "description": "Break down high Linux load averages into CPU run-queue saturation versus disk I/O wait blocked threads.",
+    "tags": [
+      "cpu",
+      "memory",
+      "iowait",
+      "performance",
+      "vmstat"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/02-incident-response.md"
+  },
+  {
+    "id": "incident-recent-files",
+    "name": "find-recent-modified",
+    "title": "Find All Files Modified in the Last 15 Minutes",
+    "category": "Incident Response",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo find /etc /var/log /tmp /opt -type f -mmin -15 -exec ls -lh {} +",
+    "description": "Track down rogue log writes, malware droppers, or configuration alterations during an active security or operational incident.",
+    "tags": [
+      "files",
+      "forensics",
+      "security",
+      "find"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/02-incident-response.md"
+  },
+  {
+    "id": "incident-top-memory",
+    "name": "ps-top-memory",
+    "title": "List Top 10 Memory Consuming Processes Formatted in MB",
+    "category": "Incident Response",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "ps -eo pid,user,rss,pmem,comm --sort=-rss | awk 'NR==1 {printf \"%-8s %-12s %-12s %-8s %s\\n\", $1, $2, \"RSS (MB)\", $4, $5} NR>1 && NR<=11 {printf \"%-8s %-12s %-12.1f %-8s %s\\n\", $1, $2, $3/1024, $4, $5}'",
+    "description": "Generate an accurate, human-readable breakdown of resident memory (RSS) consumed per process.",
+    "tags": [
+      "memory",
+      "rss",
+      "triage",
+      "ps"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/02-incident-response.md"
+  },
+  {
+    "id": "net-ss-summary",
+    "name": "ss-summary",
+    "title": "High-Level Socket State Distribution & Connection Backlogs",
+    "category": "Networking",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "ss -s",
+    "description": "Inspect total socket allocation to detect socket leaks, high `TIME-WAIT` pile-ups, or `CLOSE-WAIT` application connection descriptor leaks.",
+    "tags": [
+      "networking",
+      "ss",
+      "sockets",
+      "tcp",
+      "connections"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/03-networking-sockets.md"
+  },
+  {
+    "id": "net-curl-latency",
+    "name": "curl-timing-waterfall",
+    "title": "Trace HTTP Latency Waterfall (DNS, TCP, TLS, TTFB)",
+    "category": "Networking",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "curl -w \"\\n┌─ Latency Metrics ───────────────────────┐\\n│ DNS Resolution:     %{time_namelookup}s\\n│ TCP Handshake:      %{time_connect}s\\n│ TLS Handshake:      %{time_appconnect}s\\n│ Pre-transfer Time:  %{time_pretransfer}s\\n│ Time To First Byte: %{time_starttransfer}s\\n│ Total Duration:     %{time_total}s\\n└─────────────────────────────────────────┘\\n\" -o /dev/null -s https://api.github.com",
+    "description": "Dissect the exact microsecond latency timeline of an HTTP request: DNS resolution, TCP handshake, TLS negotiation, Time-To-First-Byte (TTFB), and transfer duration.",
+    "tags": [
+      "networking",
+      "http",
+      "curl",
+      "latency",
+      "ttfb"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/03-networking-sockets.md"
+  },
+  {
+    "id": "net-ip-brief",
+    "name": "ip-brief-colored",
+    "title": "Colored, Brief Interface & IP Assignment Overview",
+    "category": "Networking",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "ip -br -c addr show",
+    "description": "Display all local network interfaces, link states (UP/DOWN), and assigned IPv4/IPv6 addresses in clean single-line rows with native ANSI colors.",
+    "tags": [
+      "networking",
+      "ip",
+      "interfaces",
+      "routing"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/03-networking-sockets.md"
+  },
+  {
+    "id": "net-ip-route-get",
+    "name": "ip-route-destination",
+    "title": "Determine Outbound Routing Path, Source IP & Next-Hop",
+    "category": "Networking",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "ip route get 1.1.1.1",
+    "description": "Determine which local interface, source IP, and gateway the Linux kernel will choose to reach an external destination without generating traffic.",
+    "tags": [
+      "networking",
+      "routing",
+      "kernel",
+      "ip"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/03-networking-sockets.md"
+  },
+  {
+    "id": "net-tcpdump-sniff",
+    "name": "tcpdump-web-traffic",
+    "title": "Sniff HTTP/HTTPS Traffic Without DNS Resolution Lag",
+    "category": "Networking",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo tcpdump -nn -i any -c 25 'tcp port 80 or tcp port 443'",
+    "description": "Capture packet headers for HTTP/HTTPS traffic to diagnose dropped SYN packets or connection resets without getting stalled by slow reverse-DNS lookups.",
+    "tags": [
+      "networking",
+      "packet-capture",
+      "tcpdump",
+      "security"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/03-networking-sockets.md"
+  },
+  {
+    "id": "net-mtr-report",
+    "name": "mtr-loss-report",
+    "title": "Diagnose Packet Loss & Jitter with Continuous MTR Report",
+    "category": "Networking",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "mtr --report --report-cycles 10 --no-dns 8.8.8.8",
+    "description": "Combines `traceroute` and `ping` into an aggregated statistical report across every network hop to identify ISP or internal routing packet loss.",
+    "tags": [
+      "networking",
+      "mtr",
+      "traceroute",
+      "latency",
+      "packet-loss"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/03-networking-sockets.md"
+  },
+  {
+    "id": "net-nethogs-monitor",
+    "name": "nethogs-bandwidth",
+    "title": "Monitor Real-Time Bandwidth Consumption by Process",
+    "category": "Networking",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo nethogs -v 3 eth0",
+    "description": "Identify the exact running executable and PID saturating server upload or download throughput.",
+    "tags": [
+      "networking",
+      "bandwidth",
+      "process",
+      "nethogs"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/03-networking-sockets.md"
+  },
+  {
+    "id": "storage-inode-audit",
+    "name": "inode-exhaustion-audit",
+    "title": "Diagnose & Trace Inode Exhaustion",
+    "category": "Storage",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "df -i",
+    "description": "When Linux reports `No space left on device` even though `df -h` shows plenty of free gigabytes, the filesystem has run out of available inodes (caused by millions of tiny files or session tokens).",
+    "tags": [
+      "storage",
+      "inodes",
+      "disk-full",
+      "forensics"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/04-storage-filesystems.md"
+  },
+  {
+    "id": "storage-large-files",
+    "name": "find-large-files",
+    "title": "Sweep the Largest Files Exceeding 500MB",
+    "category": "Storage",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo find / -xdev -type f -size +500M -exec ls -lh {} + | awk '{print $5, $9}' | sort -hr",
+    "description": "Rapidly find massive core dumps, runaway log files, or abandoned database snapshots consuming drive capacity.",
+    "tags": [
+      "storage",
+      "disk-space",
+      "find",
+      "cleanup"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/04-storage-filesystems.md"
+  },
+  {
+    "id": "storage-vacuum-journal",
+    "name": "journalctl-vacuum",
+    "title": "Vacuum Runaway Systemd Journal Logs",
+    "category": "Storage",
+    "risk": "Mutating",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo journalctl --vacuum-size=500M --vacuum-time=14d",
+    "description": "Reclaim gigabytes of storage occupied by accumulated `systemd-journald` binary logs without rebooting or stopping the logging daemon.",
+    "tags": [
+      "storage",
+      "systemd",
+      "logs",
+      "cleanup"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/04-storage-filesystems.md"
+  },
+  {
+    "id": "storage-lsblk-tree",
+    "name": "lsblk-filesystem-tree",
+    "title": "Block Device Architecture, Filesystem Types & UUIDs",
+    "category": "Storage",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "lsblk -o NAME,FSTYPE,SIZE,FSAVAIL,FSUSE%,MOUNTPOINTS,UUID",
+    "description": "Display an organized ASCII tree of all physical NVMe/SATA drives, partitions, LVM volume groups, and mount points with filesystem formats.",
+    "tags": [
+      "storage",
+      "partitions",
+      "lvm",
+      "lsblk"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/04-storage-filesystems.md"
+  },
+  {
+    "id": "storage-dd-benchmark",
+    "name": "dd-disk-benchmark",
+    "title": "Benchmark True Sequential Storage Write Speed Without Cache",
+    "category": "Storage",
+    "risk": "Mutating",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "dd if=/dev/zero of=./speedtest.tmp bs=1M count=1024 conv=fdatasync status=progress && rm -f ./speedtest.tmp",
+    "description": "Measure actual raw hardware write throughput by bypassing Linux kernel dirty page writeback buffers.",
+    "tags": [
+      "storage",
+      "benchmark",
+      "dd",
+      "performance"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/04-storage-filesystems.md"
+  },
+  {
+    "id": "sec-find-suid",
+    "name": "find-suid-binaries",
+    "title": "Audit SUID and SGID Executables",
+    "category": "Security",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo find / -perm /6000 -type f -exec ls -ld {} + 2>/dev/null",
+    "description": "Detect binaries configured with SUID (`4000`) or SGID (`2000`) permissions that execute with elevated root or group privileges (prime targets for privilege escalation).",
+    "tags": [
+      "security",
+      "suid",
+      "privilege-escalation",
+      "audit"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/05-security-auditing.md"
+  },
+  {
+    "id": "sec-getcap-audit",
+    "name": "getcap-binaries",
+    "title": "Inspect Linux Kernel Capabilities on Binaries",
+    "category": "Security",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo getcap -r /usr /bin /sbin /usr/local 2>/dev/null",
+    "description": "Modern Linux splits root privilege into discrete capabilities (`CAP_NET_RAW`, `CAP_SYS_ADMIN`, `CAP_SETUID`). Audit which binaries hold elevated capabilities without full root SUID.",
+    "tags": [
+      "security",
+      "capabilities",
+      "linux-kernel",
+      "audit"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/05-security-auditing.md"
+  },
+  {
+    "id": "sec-ssh-failed-logins",
+    "name": "ssh-failed-logins",
+    "title": "Track Failed SSH Brute-Force Login Attempts by IP",
+    "category": "Security",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo journalctl -u ssh -u sshd -n 2000 --no-pager | grep -i \"Failed password\" | awk '{for(i=1;i<=NF;i++) if($i==\"from\") print $(i+1)}' | sort | uniq -c | sort -nr | head -15",
+    "description": "Aggregate failed SSH authentication attempts to identify active IP reconnaissance or brute-force dictionaries.",
+    "tags": [
+      "security",
+      "ssh",
+      "brute-force",
+      "auth"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/05-security-auditing.md"
+  },
+  {
+    "id": "sec-world-writable",
+    "name": "find-world-writable",
+    "title": "Locate World-Writable Files Outside Safe Temporary Directories",
+    "category": "Security",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo find /etc /opt /var/www -type f -perm -0002 -ls",
+    "description": "Find sensitive configuration or script files accidentally marked world-writable (`chmod 777`), enabling non-privileged users to inject code.",
+    "tags": [
+      "security",
+      "permissions",
+      "chmod",
+      "hardening"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/05-security-auditing.md"
+  },
+  {
+    "id": "text-http-status-histogram",
+    "name": "log-status-histogram",
+    "title": "HTTP Status Code Histogram from Web Access Logs",
+    "category": "Text & Streams",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "awk '{status[$9]++} END {for (code in status) printf \"%-6s : %8d requests\\n\", code, status[code]}' /var/log/nginx/access.log | sort -k 3 -nr",
+    "description": "Generate an instant frequency distribution and percentage share of HTTP response codes (`200`, `301`, `404`, `500`, `502`) from Nginx or Apache logs.",
+    "tags": [
+      "text",
+      "awk",
+      "logs",
+      "nginx",
+      "apache"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/06-text-data-streams.md"
+  },
+  {
+    "id": "text-xargs-parallel",
+    "name": "xargs-parallel-execution",
+    "title": "Multi-Core Parallel Execution with `xargs -P`",
+    "category": "Text & Streams",
+    "risk": "Mutating",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "find ./logs -name \"*.log\" -print0 | xargs -0 -P $(nproc) -I {} gzip -9 {}",
+    "description": "Accelerate batch operations (e.g., image resizing, compression, hash checks, API pings) by distributing tasks across all available CPU cores.",
+    "tags": [
+      "text",
+      "performance",
+      "xargs",
+      "parallel"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/06-text-data-streams.md"
+  },
+  {
+    "id": "text-column-align",
+    "name": "column-table-align",
+    "title": "Align Jagged Whitespace Data into Clean Terminal Tables",
+    "category": "Text & Streams",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "cat /etc/passwd | cut -d: -f1,3,4,6,7 | column -t -s: -N USER,UID,GID,HOME,SHELL",
+    "description": "Format unaligned delimiter-separated terminal streams or output into neatly aligned columns.",
+    "tags": [
+      "text",
+      "formatting",
+      "column",
+      "terminal"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/06-text-data-streams.md"
+  },
+  {
+    "id": "text-jq-query",
+    "name": "jq-nested-filter",
+    "title": "Slice & Query Complex JSON Streams with `jq`",
+    "category": "Text & Streams",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "cat payload.json | jq -r '.items[] | select(.status == \"error\") | [.id, .error_code, .message] | @tsv'",
+    "description": "Extract nested keys, filter by condition, and output clean tab-delimited values.",
+    "tags": [
+      "text",
+      "json",
+      "jq",
+      "api"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/06-text-data-streams.md"
+  }
+]

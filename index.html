@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Linux Commands — Modern Terminal & Incident Forensics</title>
+    <meta name="description" content="Curated catalog of modern Linux CLI tools, 3 AM incident triage one-liners, socket forensics, and storage rescue commands. With flag breakdowns and safety ratings.">
+    
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Awesome Linux Commands — Modern CLI & Production Triage">
+    <meta property="og:description" content="Explore modern CLI replacements (bat, eza, duf, btop) and battle-tested Linux forensic one-liners.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐧</text></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        obsidian: '#080b11',
+                        surface: {
+                            DEFAULT: '#0f172a',
+                            subtle: '#131d36',
+                            border: '#1e293b',
+                            hover: '#1e2d4d'
+                        },
+                        cyber: {
+                            emerald: '#10b981',
+                            cyan: '#06b6d4',
+                            violet: '#8b5cf6',
+                            amber: '#f59e0b',
+                            rose: '#f43f5e'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::selection { background-color: #10b981; color: #080b11; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #080b11; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #334155; }
+    </style>
+</head>
+<body class="bg-obsidian text-slate-100 min-h-screen font-sans antialiased selection:bg-cyber-emerald selection:text-obsidian flex flex-col custom-scrollbar">
+
+    <!-- Ambient Glow Background -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-cyber-emerald/10 blur-[130px] rounded-full"></div>
+        <div class="absolute top-80 right-10 w-[500px] h-[350px] bg-cyber-cyan/10 blur-[130px] rounded-full"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 backdrop-blur-xl bg-obsidian/85 border-b border-surface-border transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🐧</span>
+                <a href="#" class="font-extrabold text-lg sm:text-xl tracking-tight bg-gradient-to-r from-emerald-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">
+                    Awesome Linux Commands
+                </a>
+                <span class="hidden md:inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    Production Cheatsheet
+                </span>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="https://github.com/vikaskyadav/awesome-linux-commands" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium bg-surface-subtle hover:bg-surface-hover border border-surface-border hover:border-slate-600 transition-all text-slate-200">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>Star on GitHub</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative z-10 pt-10 pb-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+            Master the <span class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Modern Linux Terminal</span>
+        </h1>
+        <p class="max-w-2xl mx-auto text-slate-400 text-sm sm:text-base leading-relaxed">
+            Curated next-generation CLI utilities, 3 AM production incident forensics, socket inspection, and text-wrangling power one-liners. Complete with flag dissections and safety levels.
+        </p>
+
+        <!-- Stats Bar -->
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs text-slate-300">
+            <span class="px-3 py-1 bg-surface-subtle border border-surface-border rounded-full flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span id="stat-total">40</span> Commands
+            </span>
+            <span class="px-3 py-1 bg-surface-subtle border border-surface-border rounded-full flex items-center gap-1.5">
+                <span>⚡</span> 6 Domain Modules
+            </span>
+            <span class="px-3 py-1 bg-surface-subtle border border-surface-border rounded-full flex items-center gap-1.5">
+                <span>🛡️</span> 100% Flag Dissected
+            </span>
+        </div>
+    </section>
+
+    <!-- Search & Filter Controls -->
+    <section class="sticky top-16 z-30 backdrop-blur-md bg-obsidian/95 border-b border-surface-border py-4 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-3">
+            
+            <!-- Search Input -->
+            <div class="relative max-w-3xl mx-auto">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+                <input type="text" id="search-input" placeholder="Search commands, flags, tools (e.g. ss, btop, disk full, lsof, port)... [Press '/' to focus]"
+                       class="w-full pl-11 pr-24 py-2.5 rounded-xl bg-surface-subtle border border-surface-border focus:border-emerald-500/70 focus:ring-1 focus:ring-emerald-500/70 text-slate-100 placeholder-slate-500 text-sm transition-all outline-none">
+                <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                    <span id="results-count" class="text-xs text-slate-400 bg-surface border border-surface-border px-2 py-0.5 rounded">
+                        40 results
+                    </span>
+                </div>
+            </div>
+
+            <!-- Category & Risk Pills -->
+            <div class="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-2 pt-1 text-xs">
+                <span class="text-slate-500 font-semibold mr-1">Category:</span>
+                <button class="filter-cat-btn px-3 py-1 rounded-lg border font-medium transition-all bg-emerald-500/20 text-emerald-300 border-emerald-500/40" data-cat="all">All</button>
+                <button class="filter-cat-btn px-3 py-1 rounded-lg border font-medium transition-all bg-surface-subtle text-slate-400 border-surface-border hover:border-slate-500" data-cat="Modern CLI">🚀 Modern CLI</button>
+                <button class="filter-cat-btn px-3 py-1 rounded-lg border font-medium transition-all bg-surface-subtle text-slate-400 border-surface-border hover:border-slate-500" data-cat="Incident Response">🚨 Incident Response</button>
+                <button class="filter-cat-btn px-3 py-1 rounded-lg border font-medium transition-all bg-surface-subtle text-slate-400 border-surface-border hover:border-slate-500" data-cat="Networking">🌐 Networking</button>
+                <button class="filter-cat-btn px-3 py-1 rounded-lg border font-medium transition-all bg-surface-subtle text-slate-400 border-surface-border hover:border-slate-500" data-cat="Storage">💾 Storage</button>
+                <button class="filter-cat-btn px-3 py-1 rounded-lg border font-medium transition-all bg-surface-subtle text-slate-400 border-surface-border hover:border-slate-500" data-cat="Security">🛡️ Security</button>
+                <button class="filter-cat-btn px-3 py-1 rounded-lg border font-medium transition-all bg-surface-subtle text-slate-400 border-surface-border hover:border-slate-500" data-cat="Text & Streams">🧙 Text & Streams</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Command Cards Grid -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 z-10">
+        <div id="cards-container" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <!-- Cards rendered dynamically via JavaScript -->
+        </div>
+        <div id="no-results" class="hidden text-center py-16">
+            <span class="text-4xl">🔍</span>
+            <p class="text-slate-400 mt-3 text-base">No matching commands found. Try adjusting your search query or filter.</p>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface border border-emerald-500/40 text-emerald-300 shadow-xl text-sm font-medium">
+        <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        <span id="toast-message">Copied command to clipboard!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-surface-border bg-obsidian/90 py-6 text-center text-xs text-slate-500 z-10">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p>Built with ❤️ for the Linux & DevOps Community by <a href="https://github.com/vikaskyadav" class="text-emerald-400 hover:underline">Vikas Yadav</a>.</p>
+            <div class="flex items-center gap-4">
+                <a href="https://github.com/vikaskyadav/awesome-linux-commands" class="hover:text-slate-300 transition-colors">GitHub Repository</a>
+                <span>•</span>
+                <a href="https://github.com/vikaskyadav/awesome-bash-alias" class="hover:text-slate-300 transition-colors">Awesome Bash Aliases</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App Logic -->
+    <script>
+        let commandsData = [];
+        let activeCategory = 'all';
+
+        const searchInput = document.getElementById('search-input');
+        const cardsContainer = document.getElementById('cards-container');
+        const resultsCount = document.getElementById('results-count');
+        const noResults = document.getElementById('no-results');
+        const catButtons = document.querySelectorAll('.filter-cat-btn');
+
+        // Fetch metadata.json
+        async function loadCatalog() {
+            try {
+                const res = await fetch('metadata.json');
+                commandsData = await res.json();
+                document.getElementById('stat-total').innerText = commandsData.length;
+                renderCommands();
+            } catch (err) {
+                console.error("Failed to load metadata.json:", err);
+            }
+        }
+
+        function getRiskBadge(risk, privilege) {
+            let badge = '';
+            if (risk === 'Safe') {
+                badge += `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">🟢 Safe</span>`;
+            } else if (risk === 'Mutating') {
+                badge += `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">🟡 Mutating</span>`;
+            } else if (risk === 'Destructive') {
+                badge += `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-rose-500/10 text-rose-400 border border-rose-500/20">🔴 Destructive</span>`;
+            }
+            if (privilege === 'Sudo') {
+                badge += ` <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-violet-500/10 text-violet-400 border border-violet-500/20">🛡️ Sudo</span>`;
+            }
+            return badge;
+        }
+
+        function renderCommands() {
+            const query = searchInput.value.toLowerCase().trim();
+            const filtered = commandsData.filter(cmd => {
+                const matchesCat = (activeCategory === 'all' || cmd.category.toLowerCase() === activeCategory.toLowerCase());
+                if (!matchesCat) return false;
+
+                if (!query) return true;
+                const matchName = cmd.name.toLowerCase().includes(query);
+                const matchTitle = cmd.title.toLowerCase().includes(query);
+                const matchDesc = cmd.description.toLowerCase().includes(query);
+                const matchCommand = cmd.command.toLowerCase().includes(query);
+                const matchReplaces = cmd.replaces && cmd.replaces.toLowerCase().includes(query);
+                const matchTags = cmd.tags && cmd.tags.some(t => t.toLowerCase().includes(query));
+
+                return matchName || matchTitle || matchDesc || matchCommand || matchReplaces || matchTags;
+            });
+
+            resultsCount.innerText = `${filtered.length} results`;
+            cardsContainer.innerHTML = '';
+
+            if (filtered.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                filtered.forEach(cmd => {
+                    const card = document.createElement('div');
+                    card.className = "flex flex-col justify-between bg-surface-subtle/80 hover:bg-surface-subtle border border-surface-border hover:border-slate-600 rounded-xl p-4 transition-all duration-200 group relative";
+
+                    const replacesHtml = cmd.replaces 
+                        ? `<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Replaces: ${cmd.replaces}</span>` 
+                        : '';
+
+                    card.innerHTML = `
+                        <div>
+                            <div class="flex items-start justify-between gap-2 mb-2">
+                                <h3 class="font-bold text-sm sm:text-base text-slate-100 group-hover:text-emerald-400 transition-colors">
+                                    ${cmd.title}
+                                </h3>
+                                <div class="flex items-center gap-1.5 shrink-0">
+                                    ${replacesHtml}
+                                    ${getRiskBadge(cmd.risk, cmd.privilege)}
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-3 leading-relaxed">
+                                ${cmd.description || 'Production utility command with complete flag validation.'}
+                            </p>
+                        </div>
+
+                        <div>
+                            <div class="relative bg-obsidian rounded-lg border border-surface-border p-3 group/code">
+                                <pre class="font-mono text-xs text-emerald-300 overflow-x-auto custom-scrollbar select-all pr-8 whitespace-pre-wrap"><code>${escapeHtml(cmd.command)}</code></pre>
+                                <button onclick="copyCommand('${encodeURIComponent(cmd.command)}')" 
+                                        class="absolute top-2 right-2 p-1.5 rounded-md bg-surface border border-surface-border text-slate-400 hover:text-white hover:border-emerald-500/40 transition-all opacity-80 hover:opacity-100" 
+                                        title="Copy Command">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                                </button>
+                            </div>
+
+                            <div class="mt-3 flex items-center justify-between text-[11px] text-slate-500">
+                                <span class="font-medium text-slate-400">${cmd.category}</span>
+                                <div class="flex flex-wrap gap-1">
+                                    ${(cmd.tags || []).slice(0, 3).map(t => `<span class="px-1.5 py-0.5 rounded bg-surface border border-surface-border text-slate-400">#${t}</span>`).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    cardsContainer.appendChild(card);
+                });
+            }
+        }
+
+        function escapeHtml(str) {
+            return str
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function copyCommand(encodedCmd) {
+            const text = decodeURIComponent(encodedCmd);
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("Command copied to clipboard!");
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2000);
+        }
+
+        // Event listeners
+        searchInput.addEventListener('input', renderCommands);
+
+        catButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                catButtons.forEach(b => {
+                    b.classList.remove('bg-emerald-500/20', 'text-emerald-300', 'border-emerald-500/40');
+                    b.classList.add('bg-surface-subtle', 'text-slate-400', 'border-surface-border');
+                });
+                btn.classList.add('bg-emerald-500/20', 'text-emerald-300', 'border-emerald-500/40');
+                btn.classList.remove('bg-surface-subtle', 'text-slate-400', 'border-surface-border');
+                activeCategory = btn.getAttribute('data-cat');
+                renderCommands();
+            });
+        });
+
+        // Keyboard Shortcut: press '/' to focus search
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && document.activeElement !== searchInput) {
+                e.preventDefault();
+                searchInput.focus();
+                searchInput.select();
+            } else if (e.key === 'Escape' && document.activeElement === searchInput) {
+                searchInput.value = '';
+                renderCommands();
+                searchInput.blur();
+            }
+        });
+
+        loadCatalog();
+    </script>
+</body>
+</html>
