@@ -11,14 +11,14 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/vikaskyadav/awesome-linux-commands/stargazers"><img src="https://img.shields.io/github/stars/vikaskyadav/awesome-linux-commands?style=for-the-badge&logo=github&color=10b981&labelColor=080b11" alt="GitHub Stars" /></a>
+  <a href="https://github.com/ctrlaltvikas/awesome--linux-commands/stargazers"><img src="https://img.shields.io/github/stars/ctrlaltvikas/awesome--linux-commands?style=for-the-badge&logo=github&color=10b981&labelColor=080b11" alt="GitHub Stars" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-06b6d4?style=for-the-badge&labelColor=080b11" alt="License" /></a>
-  <a href="https://github.com/vikaskyadav/awesome-linux-commands/pulls"><img src="https://img.shields.io/badge/PRs-Welcome-8b5cf6?style=for-the-badge&labelColor=080b11" alt="PRs Welcome" /></a>
-  <a href="https://vikaskyadav.github.io/awesome-linux-commands/"><img src="https://img.shields.io/badge/Live_Catalog-Interactive_Web_App-10b981?style=for-the-badge&labelColor=080b11" alt="Live Web App" /></a>
+  <a href="https://github.com/ctrlaltvikas/awesome--linux-commands/pulls"><img src="https://img.shields.io/badge/PRs-Welcome-8b5cf6?style=for-the-badge&labelColor=080b11" alt="PRs Welcome" /></a>
+  <a href="https://ctrlaltvikas.github.io/awesome--linux-commands/"><img src="https://img.shields.io/badge/Live_Catalog-Interactive_Web_App-10b981?style=for-the-badge&labelColor=080b11" alt="Live Web App" /></a>
 </p>
 
 <p align="center">
-  🌐 <strong>Live Interactive Web Catalog:</strong> <a href="https://vikaskyadav.github.io/awesome-linux-commands/">vikaskyadav.github.io/awesome-linux-commands</a>
+  🌐 <strong>Live Interactive Web Catalog:</strong> <a href="https://ctrlaltvikas.github.io/awesome--linux-commands/">ctrlaltvikas.github.io/awesome--linux-commands</a>
 </p>
 
 ---
@@ -31,7 +31,7 @@ Most command cheat sheets on GitHub are flat, uncurated walls of text listing co
 2. **Flag Dissection** — Never run `tar -xzvf` or `ss -tulpn` blindly again. Every letter is mapped in a clean table.
 3. **Safety & Risk Stratification** — Explicit visual indicators for read-only vs state-mutating commands.
 4. **The Modern Terminal Renaissance** — Direct side-by-side upgrades from 40-year-old coreutils to blazingly fast Rust/Go alternatives (`bat`, `eza`, `ripgrep`, `duf`, `btop`, `fd`).
-5. **Interactive Web Portal** — Instant fuzzy search and 1-click clipboard copy at [vikaskyadav.github.io/awesome-linux-commands](https://vikaskyadav.github.io/awesome-linux-commands/).
+5. **Interactive Web Portal** — Instant fuzzy search and 1-click clipboard copy at [ctrlaltvikas.github.io/awesome--linux-commands](https://ctrlaltvikas.github.io/awesome--linux-commands/).
 
 ---
 
@@ -310,7 +310,7 @@ awesome-linux-commands/
 
 Contributions are welcomed! If you have a high-impact Linux command, modern CLI alternative, or battle-tested one-liner:
 
-1. Check existing commands in `commands/` or search the [web portal](https://vikaskyadav.github.io/awesome-linux-commands/).
+1. Check existing commands in `commands/` or search the [web portal](https://ctrlaltvikas.github.io/awesome--linux-commands/).
 2. Follow the standard metadata comment structure and flag breakdown table format.
 3. Run the validator:
    ```bash
@@ -327,7 +327,7 @@ Distributed under the **MIT License**. See [LICENSE](LICENSE) for details.
 ---
 
 <p align="center">
-  Crafted with care by <strong><a href="https://github.com/vikaskyadav">Vikas Yadav</a></strong>
+  Crafted with care by <strong><a href="https://github.com/ctrlaltvikas">Vikas Yadav</a></strong>
   <br />
   If you find this project valuable, please give it a ⭐️ on GitHub!
 </p>

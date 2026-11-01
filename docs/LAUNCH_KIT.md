@@ -22,10 +22,10 @@ I built Awesome Linux Commands with a different philosophy:
 4. Universal Safety Tiering: Explicit badges for Safe (read-only), Mutating, Destructive, and Sudo-required.
 
 There's also a zero-dependency, dark-mode interactive web app with instant fuzzy search and 1-click clipboard copy:
-https://vikaskyadav.github.io/awesome-linux-commands/
+https://ctrlaltvikas.github.io/awesome--linux-commands/
 
 GitHub repo:
-https://github.com/vikaskyadav/awesome-linux-commands
+https://github.com/ctrlaltvikas/awesome--linux-commands
 
 Would love your feedback on the format, flag breakdowns, and your favorite production forensic one-liners!
 ```
@@ -45,8 +45,8 @@ Hey everyone,
 Whenever I see command cheat sheets, they either explain `pwd` for the hundredth time or share a 6-pipe bash chain with zero explanation of what the flags actually do.
 
 I put together **Awesome Linux Commands**:
-🔗 Web Catalog: https://vikaskyadav.github.io/awesome-linux-commands/
-⭐ GitHub: https://github.com/vikaskyadav/awesome-linux-commands
+🔗 Web Catalog: https://ctrlaltvikas.github.io/awesome--linux-commands/
+⭐ GitHub: https://github.com/ctrlaltvikas/awesome--linux-commands
 
 Key Highlights:
 • Modern Terminal Upgrades: Direct comparisons showing why `bat` beats `cat`, `eza` beats `ls`, `duf` beats `df`, `dust` beats `du`, `btop` beats `top`, and `zoxide` beats `cd`.
@@ -76,8 +76,8 @@ I compiled a structured, flag-dissected guide of practical production incident o
 
 All commands include flag breakdown tables and explicit risk levels (Safe vs Mutating).
 
-Live searchable portal: https://vikaskyadav.github.io/awesome-linux-commands/
-GitHub: https://github.com/vikaskyadav/awesome-linux-commands
+Live searchable portal: https://ctrlaltvikas.github.io/awesome--linux-commands/
+GitHub: https://github.com/ctrlaltvikas/awesome--linux-commands
 
 Hope this saves someone during an on-call rotation!
 ```
@@ -138,8 +138,8 @@ Hope this saves someone during an on-call rotation!
 **Tweet 6 (CTA):**
 > Explore the full catalog, search flags interactively, and 1-click copy commands:
 > 
-> 🌐 Web App: https://vikaskyadav.github.io/awesome-linux-commands/
-> ⭐ Star on GitHub: https://github.com/vikaskyadav/awesome-linux-commands
+> 🌐 Web App: https://ctrlaltvikas.github.io/awesome--linux-commands/
+> ⭐ Star on GitHub: https://github.com/ctrlaltvikas/awesome--linux-commands
 > 
 > RT if you found this helpful! 🐧
 
@@ -156,8 +156,8 @@ Every SRE, DevOps engineer, and Linux administrator knows the feeling of being p
 Most command cheat sheets on the web are either generic walls of text or list cryptic flags with zero explanation of what they actually do.
 
 To solve this, I created **Awesome Linux Commands**:
-👉 Live Interactive Portal: https://vikaskyadav.github.io/awesome-linux-commands/
-👉 GitHub Repository: https://github.com/vikaskyadav/awesome-linux-commands
+👉 Live Interactive Portal: https://ctrlaltvikas.github.io/awesome--linux-commands/
+👉 GitHub Repository: https://github.com/ctrlaltvikas/awesome--linux-commands
 
 What makes this project different:
 ✅ Modern CLI Renaissance: Practical upgrades from legacy coreutils to fast Rust/Go alternatives (`bat`, `eza`, `ripgrep`, `duf`, `btop`, `procs`).
