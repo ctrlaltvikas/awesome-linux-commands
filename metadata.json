@@ -1416,5 +1416,478 @@
       "performance"
     ],
     "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/07-performance-kernel.md"
+  },
+  {
+    "id": "sysd-failed-units",
+    "name": "systemctl-failed",
+    "title": "Triage All Failed or Degraded Systemd Units",
+    "category": "Systemd & Services",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "systemctl --failed",
+    "description": "Quickly identify every failed service, mount, or timer currently causing system degradation.",
+    "tags": [
+      "systemd",
+      "services",
+      "triage",
+      "errors"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/08-systemd-services.md"
+  },
+  {
+    "id": "sysd-analyze-blame",
+    "name": "systemd-analyze-blame",
+    "title": "Identify Boot Bottlenecks & Service Startup Delays",
+    "category": "Systemd & Services",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "systemd-analyze blame | head -15",
+    "description": "Pinpoint exactly which services delayed system boot time, sorted from slowest to fastest initialization.",
+    "tags": [
+      "systemd",
+      "boot",
+      "performance",
+      "blame"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/08-systemd-services.md"
+  },
+  {
+    "id": "sysd-analyze-critical-chain",
+    "name": "systemd-critical-chain",
+    "title": "Trace Boot Critical Chain Dependency Timeline",
+    "category": "Systemd & Services",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "systemd-analyze critical-chain",
+    "description": "Print the time-critical dependency path that delayed system boot completion.",
+    "tags": [
+      "systemd",
+      "boot",
+      "dependencies",
+      "critical-chain"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/08-systemd-services.md"
+  },
+  {
+    "id": "sysd-cat-unit",
+    "name": "systemctl-cat-unit",
+    "title": "View Complete Service Unit & Drop-in Overrides",
+    "category": "Systemd & Services",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "systemctl cat nginx.service",
+    "description": "Display the full contents of a unit file alongside all active override configuration files in `/etc/systemd/system/`.",
+    "tags": [
+      "systemd",
+      "configuration",
+      "overrides",
+      "cat"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/08-systemd-services.md"
+  },
+  {
+    "id": "sysd-show-properties",
+    "name": "systemctl-show-props",
+    "title": "Query Specific Service Runtime Properties Programmatically",
+    "category": "Systemd & Services",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "systemctl show -p ActiveEnterTimestamp,SubState,MainPID nginx.service",
+    "description": "Extract clean machine-readable runtime properties (e.g. active timestamp, main PID, substate) without parsing human-readable status text.",
+    "tags": [
+      "systemd",
+      "properties",
+      "automation",
+      "pids"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/08-systemd-services.md"
+  },
+  {
+    "id": "sysd-list-timers",
+    "name": "systemctl-list-timers",
+    "title": "List All Scheduled Systemd Timers (Modern Cron)",
+    "category": "Systemd & Services",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "systemctl list-timers --all",
+    "description": "View all active and pending systemd timer jobs, next trigger schedules, and elapsed durations since last execution.",
+    "tags": [
+      "systemd",
+      "timers",
+      "cron",
+      "scheduling"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/08-systemd-services.md"
+  },
+  {
+    "id": "sysd-cgls-tree",
+    "name": "systemd-cgls-tree",
+    "title": "Hierarchical Cgroup Process Tree per Service",
+    "category": "Systemd & Services",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "systemd-cgls",
+    "description": "Visualize which processes and worker threads belong to which systemd service slices.",
+    "tags": [
+      "systemd",
+      "cgroups",
+      "process-tree",
+      "slices"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/08-systemd-services.md"
+  },
+  {
+    "id": "sysd-cgtop-monitor",
+    "name": "systemd-cgtop-monitor",
+    "title": "Real-Time Cgroup Resource Consumption Top (`systemd-cgtop`)",
+    "category": "Systemd & Services",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "systemd-cgtop -m -n 3",
+    "description": "Interactive top-like monitor showing real-time CPU, memory, and I/O consumption grouped by systemd service slice.",
+    "tags": [
+      "systemd",
+      "cgroups",
+      "monitoring",
+      "top"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/08-systemd-services.md"
+  },
+  {
+    "id": "sysd-journal-unit-window",
+    "name": "journalctl-unit-window",
+    "title": "Stream Service Logs Within a Specific Time Window",
+    "category": "Systemd & Services",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo journalctl -u nginx.service --since \"30 min ago\" --no-pager",
+    "description": "Filter journalctl logs for a specific unit over a precise historical time range without piping through `less`.",
+    "tags": [
+      "systemd",
+      "logs",
+      "journalctl",
+      "time-window"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/08-systemd-services.md"
+  },
+  {
+    "id": "sysd-daemon-reload",
+    "name": "systemctl-daemon-reload",
+    "title": "Reload Systemd Manager Configuration",
+    "category": "Systemd & Services",
+    "risk": "Mutating",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo systemctl daemon-reload",
+    "description": "Notify systemd to rescan unit files on disk after adding or modifying drop-in overrides.",
+    "tags": [
+      "systemd",
+      "reload",
+      "config"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/08-systemd-services.md"
+  },
+  {
+    "id": "cont-lsns-audit",
+    "name": "lsns-namespace-audit",
+    "title": "Audit All Linux Namespaces on the Host (`lsns`)",
+    "category": "Containers & Namespaces",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo lsns -t net,pid,mnt",
+    "description": "List all active Linux kernel namespaces (Network, PID, Mount, IPC, UTS, User), their unique namespace inode IDs, and the root process owning each.",
+    "tags": [
+      "containers",
+      "namespaces",
+      "lsns",
+      "docker",
+      "k8s"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/09-containers-namespaces.md"
+  },
+  {
+    "id": "cont-nsenter-network",
+    "name": "nsenter-network-namespace",
+    "title": "Enter a Container Network Namespace Directly from Host (`nsenter`)",
+    "category": "Containers & Namespaces",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo nsenter -t 1234 -n ss -tulpn",
+    "description": "Run host diagnostic tools (like `ss`, `ip`, or `tcpdump`) inside a container's isolated network stack without needing `docker exec` or container root access.",
+    "tags": [
+      "containers",
+      "nsenter",
+      "networking",
+      "debug"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/09-containers-namespaces.md"
+  },
+  {
+    "id": "cont-unshare-sandbox",
+    "name": "unshare-pure-container",
+    "title": "Spawn an Isolated Lightweight Container with Pure Linux (`unshare`)",
+    "category": "Containers & Namespaces",
+    "risk": "Mutating",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo unshare --mount --net --pid --fork bash",
+    "description": "Create a private sandbox with isolated Mount, Network, and PID namespaces using built-in Linux kernel primitives without Docker or runtime daemons.",
+    "tags": [
+      "containers",
+      "namespaces",
+      "unshare",
+      "sandbox"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/09-containers-namespaces.md"
+  },
+  {
+    "id": "cont-cgroup-memory-current",
+    "name": "cgroup-memory-current",
+    "title": "Read Live Memory Consumption via cgroups v2",
+    "category": "Containers & Namespaces",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "cat /sys/fs/cgroup/system.slice/nginx.service/memory.current | awk '{printf \"%.2f MB\\n\", $1/1024/1024}'",
+    "description": "Query the exact bytes of RAM currently consumed by a service or container slice directly from the Linux cgroup filesystem.",
+    "tags": [
+      "cgroups",
+      "memory",
+      "containers",
+      "resource-limits"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/09-containers-namespaces.md"
+  },
+  {
+    "id": "cont-cgroup-memory-max",
+    "name": "cgroup-memory-max",
+    "title": "Check cgroups v2 Hard Memory Ceiling Before OOM",
+    "category": "Containers & Namespaces",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "cat /sys/fs/cgroup/system.slice/nginx.service/memory.max",
+    "description": "Inspect the hard memory threshold (`memory.max`) configured for a service before the kernel triggers the cgroup OOM killer.",
+    "tags": [
+      "cgroups",
+      "memory",
+      "oom",
+      "limits"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/09-containers-namespaces.md"
+  },
+  {
+    "id": "cont-capsh-print",
+    "name": "capsh-capabilities",
+    "title": "Inspect Linux Capabilities Bounding Set (`capsh`)",
+    "category": "Containers & Namespaces",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "capsh --print",
+    "description": "Audit which POSIX capabilities (e.g., `CAP_NET_BIND_SERVICE`, `CAP_SYS_ADMIN`, `CAP_NET_RAW`) are granted or dropped in the current execution context.",
+    "tags": [
+      "containers",
+      "security",
+      "capabilities",
+      "capsh"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/09-containers-namespaces.md"
+  },
+  {
+    "id": "cont-ip-netns-list",
+    "name": "ip-netns-list",
+    "title": "List All Named Network Namespaces (`ip netns`)",
+    "category": "Containers & Namespaces",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "ip netns list",
+    "description": "Display all named network namespaces managed via the `iproute2` subsystem.",
+    "tags": [
+      "containers",
+      "networking",
+      "namespaces",
+      "iproute2"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/09-containers-namespaces.md"
+  },
+  {
+    "id": "cont-ip-netns-exec",
+    "name": "ip-netns-exec",
+    "title": "Execute Command Inside Named Network Namespace",
+    "category": "Containers & Namespaces",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo ip netns exec mynet ip link show",
+    "description": "Run network inspection commands inside an isolated network namespace without switching your current terminal shell.",
+    "tags": [
+      "containers",
+      "networking",
+      "namespaces",
+      "ip-netns"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/09-containers-namespaces.md"
+  },
+  {
+    "id": "cont-detect-virt",
+    "name": "systemd-detect-virt",
+    "title": "Detect Hypervisor or Container Virtualization Technology",
+    "category": "Containers & Namespaces",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "systemd-detect-virt",
+    "description": "Determine instantly whether the current host is bare-metal, a cloud virtual machine, or a containerized instance.",
+    "tags": [
+      "virtualization",
+      "containers",
+      "hardware",
+      "systemd"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/09-containers-namespaces.md"
+  },
+  {
+    "id": "hw-lscpu-extended",
+    "name": "lscpu-topology",
+    "title": "Map CPU Cores, Sockets, NUMA Nodes & Cache Hierarchy",
+    "category": "Hardware & Thermals",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "lscpu -e=CPU,CORE,SOCKET,NODE,L1d,L1i,L2,L3",
+    "description": "Print an extended table mapping every logical thread to its physical CPU socket, core ID, NUMA node, and L1/L2/L3 cache allocations.",
+    "tags": [
+      "hardware",
+      "cpu",
+      "numa",
+      "topology",
+      "lscpu"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/10-hardware-thermals.md"
+  },
+  {
+    "id": "hw-dmidecode-ram",
+    "name": "dmidecode-memory",
+    "title": "Audit Physical RAM Stick Hardware Without Rebooting",
+    "category": "Hardware & Thermals",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo dmidecode -t memory | grep -E 'Size|Speed|Type:|Manufacturer|Locator' | grep -v 'No Module Installed'",
+    "description": "Inspect motherboard DIMM slots, installed memory capacity, speeds (MT/s), DDR type, and manufacturer without physical access to the chassis.",
+    "tags": [
+      "hardware",
+      "memory",
+      "ram",
+      "dmidecode",
+      "ddr"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/10-hardware-thermals.md"
+  },
+  {
+    "id": "hw-lspci-tree",
+    "name": "lspci-bus-tree",
+    "title": "Hardware PCI Bus Topology Tree with Kernel Drivers",
+    "category": "Hardware & Thermals",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "lspci -tv -k",
+    "description": "Display the complete PCI Express bus tree showing bridge hierarchies and the active Linux kernel driver module managing each device.",
+    "tags": [
+      "hardware",
+      "pci",
+      "lspci",
+      "drivers"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/10-hardware-thermals.md"
+  },
+  {
+    "id": "hw-lsusb-tree",
+    "name": "lsusb-bus-tree",
+    "title": "USB Bus & Device Tree with Negotiated Transfer Speeds",
+    "category": "Hardware & Thermals",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "lsusb -tv",
+    "description": "Inspect all USB host controllers, hubs, connected peripherals, and their active negotiated bitrates (e.g. `480M`, `5000M`, `10000M`).",
+    "tags": [
+      "hardware",
+      "usb",
+      "lsusb",
+      "peripherals"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/10-hardware-thermals.md"
+  },
+  {
+    "id": "hw-sensors-temps",
+    "name": "sensors-temperatures",
+    "title": "Monitor Live CPU Core Temperatures & Fan Speeds",
+    "category": "Hardware & Thermals",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "sensors",
+    "description": "Check CPU die package temperatures, per-core thermal limits, and cooling fan RPM via kernel sensor drivers (`lm-sensors`).",
+    "tags": [
+      "hardware",
+      "thermal",
+      "cpu",
+      "temperature",
+      "fan"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/10-hardware-thermals.md"
+  },
+  {
+    "id": "hw-turbostat-power",
+    "name": "turbostat-power-metrics",
+    "title": "Real-Time CPU Power Consumption & Package Wattage (`turbostat`)",
+    "category": "Hardware & Thermals",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo turbostat --quiet --interval 2 --show PkgWatt,CoreTmp,Avg_MHz",
+    "description": "Measure actual CPU electrical power draw (Watts), core package temperatures, and hardware frequency transitions.",
+    "tags": [
+      "hardware",
+      "cpu",
+      "power",
+      "wattage",
+      "turbostat"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/10-hardware-thermals.md"
+  },
+  {
+    "id": "hw-dmidecode-bios",
+    "name": "dmidecode-bios-version",
+    "title": "Audit Motherboard BIOS / UEFI Firmware Details",
+    "category": "Hardware & Thermals",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo dmidecode -t bios | grep -E 'Vendor|Version|Release Date'",
+    "description": "Retrieve system motherboard vendor, BIOS/UEFI version string, and firmware release date without accessing the BIOS setup menu.",
+    "tags": [
+      "hardware",
+      "bios",
+      "uefi",
+      "firmware",
+      "dmidecode"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/10-hardware-thermals.md"
   }
 ]

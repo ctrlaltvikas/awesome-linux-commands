@@ -335,24 +335,131 @@ sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
 
 ---
 
+---
+
+## ⚙️ Systemd, Services & Boot Profiling
+
+### 1. Triage All Failed Systemd Units Across the Host
+
+```bash
+systemctl --failed
+```
+
+> 🟢 **Safety:** Safe &nbsp;|&nbsp; 🛡️ **Privilege:** Normal
+
+---
+
+### 2. Identify Boot Bottlenecks & Startup Delays
+
+```bash
+systemd-analyze blame | head -15
+```
+
+> 🟢 **Safety:** Safe &nbsp;|&nbsp; 🛡️ **Privilege:** Normal
+
+---
+
+### 3. View Complete Service Unit & Drop-in Overrides
+
+```bash
+systemctl cat nginx.service
+```
+
+> 🟢 **Safety:** Safe &nbsp;|&nbsp; 🛡️ **Privilege:** Normal
+
+---
+
+## 🐳 Containers, Namespaces & cgroups
+
+### 1. Enter Container Network Namespace Directly from Host
+
+```bash
+sudo nsenter -t 1234 -n ss -tulpn
+```
+
+| Flag | Meaning |
+| :--- | :--- |
+| `-t 1234` | Target PID running inside container |
+| `-n` | Enter network namespace only |
+| `ss -tulpn` | Command executed inside container network stack |
+
+> 🟢 **Safety:** Safe &nbsp;|&nbsp; 🛡️ **Privilege:** Sudo Required
+
+---
+
+### 2. Audit All Active Linux Namespaces
+
+```bash
+sudo lsns -t net,pid,mnt
+```
+
+> 🟢 **Safety:** Safe &nbsp;|&nbsp; 🛡️ **Privilege:** Sudo Required
+
+---
+
+### 3. Query Real-Time Memory Consumption via cgroups v2
+
+```bash
+cat /sys/fs/cgroup/system.slice/nginx.service/memory.current | awk '{printf "%.2f MB\n", $1/1024/1024}'
+```
+
+> 🟢 **Safety:** Safe &nbsp;|&nbsp; 🛡️ **Privilege:** Normal
+
+---
+
+## 🖥️ Hardware, CPU Topology & Thermals
+
+### 1. Map Logical Threads to Physical NUMA Cores & Cache
+
+```bash
+lscpu -e=CPU,CORE,SOCKET,NODE,L1d,L1i,L2,L3
+```
+
+> 🟢 **Safety:** Safe &nbsp;|&nbsp; 🛡️ **Privilege:** Normal
+
+---
+
+### 2. Audit Physical RAM Stick Speeds & Capacity Without Reboot
+
+```bash
+sudo dmidecode -t memory | grep -E 'Size|Speed|Type:|Manufacturer|Locator' | grep -v 'No Module Installed'
+```
+
+> 🟢 **Safety:** Safe &nbsp;|&nbsp; 🛡️ **Privilege:** Sudo Required
+
+---
+
+### 3. Hardware PCI Bus Topology Tree with Kernel Drivers
+
+```bash
+lspci -tv -k
+```
+
+> 🟢 **Safety:** Safe &nbsp;|&nbsp; 🛡️ **Privilege:** Normal
+
+---
+
 ## 📁 Repository Structure
 
 ```text
 awesome-linux-commands/
 ├── README.md                           # Master GitHub documentation
 ├── index.html                          # Interactive dark-mode web application (GitHub Pages)
-├── metadata.json                       # Machine-readable command catalog database (78 commands)
+├── metadata.json                       # Machine-readable command catalog database (104 commands)
 ├── .nojekyll                           # Preserves assets on GitHub Pages
 ├── LICENSE                             # MIT License
 ├── CONTRIBUTING.md                     # Community contribution guidelines
-├── commands/                           # Modular domain command files
+├── commands/                           # Modular domain command files (10 Modules)
 │   ├── 01-modern-replacements.md       # Rust & Go next-gen terminal utilities
 │   ├── 02-incident-response.md         # Production triage, zombie hunting, open descriptors
 │   ├── 03-networking-sockets.md        # ss, curl waterfall, tcpdump, mtr, dns
 │   ├── 04-storage-filesystems.md       # Inodes, large files, journalctl vacuum, pv, shred
 │   ├── 05-security-auditing.md         # SUID audit, getcap, chattr +i, failed SSH logins
 │   ├── 06-text-data-streams.md         # awk histograms, xargs -P, /dev/urandom, comm
-│   └── 07-performance-kernel.md        # renice, taskset, dirty memory, pidstat, sysctl
+│   ├── 07-performance-kernel.md        # renice, taskset, dirty memory, pidstat, sysctl
+│   ├── 08-systemd-services.md          # systemctl failed, blame, critical-chain, cat, cgroups
+│   ├── 09-containers-namespaces.md     # lsns, nsenter, unshare, cgroups v2, capsh
+│   └── 10-hardware-thermals.md         # lscpu topology, dmidecode RAM/BIOS, lspci, sensors
 ├── scripts/
 │   └── build_catalog.py                # Automated parser, validator, and JSON generator
 └── docs/
