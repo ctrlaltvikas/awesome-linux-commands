@@ -100,3 +100,103 @@ cat payload.json | jq -r '.items[] | select(.status == "error") | [.id, .error_c
 | `.items[]` | Unrolls items array into individual objects |
 | `select(...)` | Filters objects matching the boolean condition |
 | `@tsv` | Formats the resulting array as clean tab-separated values ready for `awk` or spreadsheet paste |
+
+
+---
+
+### 5. Generate Cryptographically Secure Passwords from `/dev/urandom`
+
+Create a 24-character high-entropy alphanumeric password with special characters without installing third-party utilities.
+
+<!-- @id: text-gen-password -->
+<!-- @name: urandom-password-gen -->
+<!-- @category: Text & Streams -->
+<!-- @risk: Safe -->
+<!-- @privilege: Normal -->
+<!-- @tags: text, security, random, password, urandom -->
+
+```bash
+tr -dc 'A-Za-z0-9!@#$%^&*()_+' < /dev/urandom | head -c 24; echo
+```
+
+#### Flag Breakdown
+| Element | Description |
+| :--- | :--- |
+| `tr -dc '...'` | Delete and complement: filter stream strictly to the specified allowed character set |
+| `< /dev/urandom` | Read from Linux kernel non-blocking entropy pool |
+| `head -c 24` | Truncate output after exactly 24 bytes |
+| `; echo` | Append newline character for clean terminal display |
+
+---
+
+### 6. Live Log Tail with Real-Time Colorized Keyword Highlighting
+
+Follow a streaming log file while highlighting critical error words without buffering delays.
+
+<!-- @id: text-tail-color-grep -->
+<!-- @name: tail-colored-grep -->
+<!-- @category: Text & Streams -->
+<!-- @risk: Safe -->
+<!-- @privilege: Normal -->
+<!-- @tags: text, logs, streaming, tail, grep -->
+
+```bash
+tail -f /var/log/syslog | grep --line-buffered -E --color=always 'error|fail|crit|exception|$'
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `tail -f` | Output appended data as the file grows |
+| `--line-buffered` | Force `grep` to flush stdout on every newline (prevents output stuttering in pipelines) |
+| `-E` | Extended regular expressions |
+| `--color=always` | Preserve ANSI color codes even when piped |
+| `'$'` | Matches end of every line so non-matching lines are still displayed without color |
+
+---
+
+### 7. Find Common Lines Across Two Lists Without Creating Temp Files
+
+Compute the exact intersection of two unsorted text files using Bash process substitution.
+
+<!-- @id: text-comm-intersection -->
+<!-- @name: comm-process-substitution -->
+<!-- @category: Text & Streams -->
+<!-- @risk: Safe -->
+<!-- @privilege: Normal -->
+<!-- @tags: text, diff, comm, set-theory -->
+
+```bash
+comm -12 <(sort list_a.txt) <(sort list_b.txt)
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-1` | Suppress lines unique to file 1 |
+| `-2` | Suppress lines unique to file 2 |
+| `-12` | Combined: outputs strictly lines present in BOTH files (intersection) |
+| `<(...)` | Process substitution: runs sort in a FIFO subshell without writing temporary files to disk |
+
+---
+
+### 8. Fast Column Slicing from Delimited CSV/TSV Files
+
+Extract specific fields rapidly without the overhead of heavy scripting runtimes.
+
+<!-- @id: text-cut-columns -->
+<!-- @name: cut-field-slicing -->
+<!-- @category: Text & Streams -->
+<!-- @risk: Safe -->
+<!-- @privilege: Normal -->
+<!-- @tags: text, cut, csv, data -->
+
+```bash
+cut -d',' -f1,3,5 server_metrics.csv
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-d','` | Define delimiter character (comma `,`) |
+| `-f1,3,5` | Extract columns 1, 3, and 5 |

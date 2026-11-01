@@ -290,3 +290,143 @@ tldr tar
 
 #### Why It Beats `man`
 Standard `man` pages are encyclopedic manuals written 30 years ago spanning thousands of lines. `tldr` provides 5 to 8 community-curated, copy-pasteable examples for the most common real-world use cases.
+
+
+---
+
+### 13. `hyperfine` — Statistical Benchmarking Replacement for `time`
+
+<!-- @id: modern-hyperfine -->
+<!-- @name: hyperfine -->
+<!-- @category: Modern CLI -->
+<!-- @risk: Safe -->
+<!-- @replaces: time -->
+<!-- @tags: rust, benchmark, performance, profiling -->
+
+```bash
+hyperfine --warmup 3 'fd -e md' 'find . -name "*.md"'
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `--warmup 3` | Execute commands 3 times prior to timing to ensure disk caches are warm |
+| `'cmd1' 'cmd2'` | Run statistical side-by-side comparison across multiple iterations |
+
+#### Why It Beats `time`
+`time` executes a single run vulnerable to disk cache variance. `hyperfine` runs statistical sampling, computes standard deviation, flags outliers, and outputs an automated side-by-side comparison table.
+
+---
+
+### 14. `bandwhich` — Terminal Bandwidth Utilization Replacement for `iftop`
+
+<!-- @id: modern-bandwhich -->
+<!-- @name: bandwhich -->
+<!-- @category: Modern CLI -->
+<!-- @risk: Safe -->
+<!-- @privilege: Sudo -->
+<!-- @replaces: iftop -->
+<!-- @tags: rust, networking, bandwidth, process -->
+
+```bash
+sudo bandwhich --show-dns
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `--show-dns` | Show real-time DNS queries alongside active network connections |
+
+#### Why It Beats `iftop`
+`iftop` only reports raw IP addresses. `bandwhich` sniffs socket packets to map network bandwidth usage back to the exact running process name, connection state, and remote hostname.
+
+---
+
+### 15. `gdu` — Fast Interactive Disk Usage Analyzer Replacement for `ncdu`
+
+<!-- @id: modern-gdu -->
+<!-- @name: gdu -->
+<!-- @category: Modern CLI -->
+<!-- @risk: Safe -->
+<!-- @replaces: ncdu -->
+<!-- @tags: go, storage, disk, interactive -->
+
+```bash
+gdu -d /var
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-d` | Target directory to analyze interactively |
+
+#### Why It Beats `ncdu`
+`ncdu` is single-threaded and struggles on multi-terabyte SSDs. `gdu` is written in Go with parallel multi-core traversal, scanning millions of files up to 5x faster with a responsive curses interface.
+
+---
+
+### 16. `sd` — Intuitive Find & Replace Replacement for `sed`
+
+<!-- @id: modern-sd -->
+<!-- @name: sd -->
+<!-- @category: Modern CLI -->
+<!-- @risk: Mutating -->
+<!-- @replaces: sed -->
+<!-- @tags: rust, text, regex, search-replace -->
+
+```bash
+sd 'https://api.old.com' 'https://api.new.com' config.json
+```
+
+#### Flag Breakdown
+| Argument | Description |
+| :--- | :--- |
+| `'find'` | String or PCRE regex pattern to match |
+| `'replace'` | Replacement string (supports capture groups `$1`, `$2`) |
+| `config.json` | File to edit in place directly without requiring `-i` |
+
+#### Why It Beats `sed`
+`sed -i` has incompatible syntax between macOS (`sed -i ''`) and Linux (`sed -i`). `sd` uses cross-platform intuitive arguments, handles newlines safely, and uses standard regex patterns without escaping hell.
+
+---
+
+### 17. `doggo` — Human-Friendly, Colored DNS Client Replacement for `dig`
+
+<!-- @id: modern-doggo -->
+<!-- @name: doggo -->
+<!-- @category: Modern CLI -->
+<!-- @risk: Safe -->
+<!-- @replaces: dig -->
+<!-- @tags: go, dns, networking, colored -->
+
+```bash
+doggo A github.com @1.1.1.1 --time
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `A` | DNS record query type (`A`, `AAAA`, `MX`, `TXT`, `CNAME`) |
+| `@1.1.1.1` | Specify custom nameserver resolver |
+| `--time` | Display total DNS query response latency |
+
+#### Why It Beats `dig`
+`dig` returns verbose, cluttered comments that require `+short` to be usable. `doggo` provides clean, colorful, tabular output with built-in DoH (DNS-over-HTTPS) and DoT (DNS-over-TLS) support.
+
+---
+
+### 18. `ouch` — Painless Universal Compression Tool Replacement for `tar`
+
+<!-- @id: modern-ouch -->
+<!-- @name: ouch -->
+<!-- @category: Modern CLI -->
+<!-- @risk: Mutating -->
+<!-- @replaces: tar -->
+<!-- @tags: rust, compression, archives, universal -->
+
+```bash
+ouch decompress archive.tar.gz
+```
+
+#### Why It Beats `tar`
+No need to remember whether you need `-xzvf`, `-xjvf`, or `-xvf`. `ouch` auto-detects archive format (`.zip`, `.tar.gz`, `.tar.bz2`, `.7z`, `.tar.zst`) from the file extension and decompresses cleanly with a progress bar.

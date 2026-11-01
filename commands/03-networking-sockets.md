@@ -161,3 +161,142 @@ sudo nethogs -v 3 eth0
 | :--- | :--- |
 | `-v 3` | View mode: display transfer rates in Megabytes/sec (MB/s) |
 | `eth0` | Network interface to monitor |
+
+
+---
+
+### 8. Pure Bash Remote TCP Port Reachability Check
+
+Test if a remote host and TCP port is reachable and accepting connections using pure Bash with zero external dependencies (`nc`, `telnet`, or `nmap` not required).
+
+<!-- @id: net-bash-tcp-check -->
+<!-- @name: bash-tcp-test -->
+<!-- @category: Networking -->
+<!-- @risk: Safe -->
+<!-- @privilege: Normal -->
+<!-- @tags: networking, bash, port-check, connectivity -->
+
+```bash
+timeout 2 bash -c '</dev/tcp/1.1.1.1/443' && echo "PORT OPEN" || echo "PORT CLOSED"
+```
+
+#### Why Run This
+In minimal Alpine/container images where `telnet`, `nc`, and `curl` are missing, `/dev/tcp` allows instant connectivity checks directly inside Bash.
+
+---
+
+### 9. Query Remote TLS / SSL Certificate Expiration Dates
+
+Extract the exact activation and expiry dates of a remote HTTPS certificate directly from the command line without opening a browser.
+
+<!-- @id: net-openssl-cert-expiry -->
+<!-- @name: openssl-cert-dates -->
+<!-- @category: Networking -->
+<!-- @risk: Safe -->
+<!-- @privilege: Normal -->
+<!-- @tags: networking, tls, ssl, certificates, openssl -->
+
+```bash
+echo | openssl s_client -connect github.com:443 -servername github.com 2>/dev/null | openssl x509 -noout -dates
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-connect host:443` | Target endpoint and port |
+| `-servername host` | Send SNI (Server Name Indication) header for virtual-hosted domains |
+| `-noout -dates` | Suppress certificate body output and print strictly `notBefore` and `notAfter` timestamps |
+
+---
+
+### 10. Real-Time DNS Query Packet Sniffer
+
+Capture outbound and inbound DNS lookup queries on port 53 to diagnose unresolved domain lookups or misconfigured DNS servers.
+
+<!-- @id: net-tcpdump-dns -->
+<!-- @name: tcpdump-dns-sniffer -->
+<!-- @category: Networking -->
+<!-- @risk: Safe -->
+<!-- @privilege: Sudo -->
+<!-- @tags: networking, dns, packet-capture, tcpdump -->
+
+```bash
+sudo tcpdump -nn -i any -c 20 udp port 53
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-nn` | Suppress domain and port name resolution for zero-delay output |
+| `-i any` | Listen across all active interfaces |
+| `-c 20` | Exit automatically after capturing 20 queries |
+| `udp port 53` | Filter specifically for DNS traffic |
+
+---
+
+### 11. Instant Zero-Config HTTP Static File Server
+
+Serve the current working directory over local HTTP for rapid file sharing or local web development.
+
+<!-- @id: net-python-http-server -->
+<!-- @name: python-http-server -->
+<!-- @category: Networking -->
+<!-- @risk: Mutating -->
+<!-- @privilege: Normal -->
+<!-- @tags: networking, http, python, web-server -->
+
+```bash
+python3 -m http.server 8080 --bind 127.0.0.1
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-m http.server` | Invoke Python's built-in HTTP server module |
+| `8080` | Port to bind to |
+| `--bind 127.0.0.1` | Restrict listening strictly to localhost for security |
+
+---
+
+### 12. Flush Local DNS Resolver Cache
+
+Force local `systemd-resolved` to purge cached DNS entries and immediately re-query authoritative nameservers.
+
+<!-- @id: net-flush-dns-cache -->
+<!-- @name: resolvectl-flush-cache -->
+<!-- @category: Networking -->
+<!-- @risk: Mutating -->
+<!-- @privilege: Sudo -->
+<!-- @tags: networking, dns, cache, systemd-resolved -->
+
+```bash
+sudo resolvectl flush-caches
+```
+
+#### Verification
+```bash
+resolvectl statistics
+```
+
+---
+
+### 13. Query Public IPv4 Address with Zero HTML Bloat
+
+Retrieve your public-facing WAN IP address cleanly for automation scripts or CLI inspection.
+
+<!-- @id: net-curl-public-ip -->
+<!-- @name: curl-public-ip -->
+<!-- @category: Networking -->
+<!-- @risk: Safe -->
+<!-- @privilege: Normal -->
+<!-- @tags: networking, ip, curl, public-ip -->
+
+```bash
+curl -s4 https://ifconfig.me
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-s` | Silent mode: suppresses progress bar |
+| `-4` | Force IPv4 connection |

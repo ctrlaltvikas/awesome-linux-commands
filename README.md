@@ -66,6 +66,12 @@ Upgrade your daily terminal ergonomics with modern replacements built for high p
 | `cd` | **[zoxide (z)](https://github.com/ajeetdsouza/zoxide)** | Rust | Frecency-based smart jumping across deeply nested directories | `z project` |
 | `diff` | **[delta](https://github.com/dandavison/delta)** | Rust | Syntax-highlighted side-by-side terminal diffs with line numbering | `git diff \| delta --side-by-side` |
 | `man` | **[tldr](https://github.com/tldr-pages/tldr)** | Community | 5 practical, copy-pasteable real-world examples instead of 5,000-line manuals | `tldr tar` |
+| `time` | **[hyperfine](https://github.com/sharkdp/hyperfine)** | Rust | Statistical CLI benchmarking with warmup runs and standard deviation | `hyperfine 'fd -e md' 'find . -name "*.md"'` |
+| `iftop` | **[bandwhich](https://github.com/imsnif/bandwhich)** | Rust | Real-time network utilization mapped to process names and DNS queries | `sudo bandwhich` |
+| `ncdu` | **[gdu](https://github.com/dundee/gdu)** | Go | Parallel multi-core disk usage analyzer, 5x faster than ncdu | `gdu -d /var` |
+| `sed` | **[sd](https://github.com/chmln/sd)** | Rust | Intuitive, cross-platform search and replace with clean regex | `sd 'old_url' 'new_url' config.json` |
+| `dig` | **[doggo](https://github.com/mr-karan/doggo)** | Go | Colorful, tabular DNS client with DoH, DoT, and latency tracking | `doggo A github.com @1.1.1.1` |
+| `tar` | **[ouch](https://github.com/ouch-org/ouch)** | Rust | Painless universal compression & decompression with progress bars | `ouch decompress archive.tar.gz` |
 
 ---
 
@@ -281,23 +287,72 @@ find ./logs -name "*.log" -print0 | xargs -0 -P $(nproc) -I {} gzip -9 {}
 
 ---
 
+---
+
+## ⚙️ Performance Observability & Kernel Tuning
+
+### 1. Dynamically Adjust Process Scheduling Priority (`renice`)
+
+```bash
+sudo renice -n -5 -p 1234
+```
+
+| Flag | Meaning |
+| :--- | :--- |
+| `-n -5` | Set priority offset (`-20` is highest priority, `19` is lowest) |
+| `-p 1234` | Target Process ID |
+
+> 🟡 **Mutating:** Adjusts kernel CPU time slice allocation &nbsp;|&nbsp; 🛡️ **Privilege:** Sudo Required
+
+---
+
+### 2. Bind Process to Dedicated CPU Cores (`taskset`)
+
+```bash
+taskset -c 0,1 nginx -g "daemon off;"
+```
+
+| Flag | Meaning |
+| :--- | :--- |
+| `-c 0,1` | Pin execution strictly to logical CPU cores 0 and 1 |
+
+> 🟢 **Safety:** Safe &nbsp;|&nbsp; 🛡️ **Privilege:** Normal
+
+---
+
+### 3. Safely Flush Dirty Buffers & Drop Inactive Page Cache
+
+```bash
+sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
+```
+
+| Element | Meaning |
+| :--- | :--- |
+| `sync` | Flushes all dirty unwritten buffers to disk first to prevent data loss |
+| `echo 3` | Frees clean page cache, dentries, and inode cache from RAM |
+
+> 🟡 **Mutating:** Frees inactive cached memory &nbsp;|&nbsp; 🛡️ **Privilege:** Sudo Required
+
+---
+
 ## 📁 Repository Structure
 
 ```text
 awesome-linux-commands/
 ├── README.md                           # Master GitHub documentation
 ├── index.html                          # Interactive dark-mode web application (GitHub Pages)
-├── metadata.json                       # Machine-readable command catalog database
+├── metadata.json                       # Machine-readable command catalog database (78 commands)
 ├── .nojekyll                           # Preserves assets on GitHub Pages
 ├── LICENSE                             # MIT License
 ├── CONTRIBUTING.md                     # Community contribution guidelines
 ├── commands/                           # Modular domain command files
 │   ├── 01-modern-replacements.md       # Rust & Go next-gen terminal utilities
 │   ├── 02-incident-response.md         # Production triage, zombie hunting, open descriptors
-│   ├── 03-networking-sockets.md        # ss, curl waterfall, tcpdump, mtr
-│   ├── 04-storage-filesystems.md       # Inodes, large files, journalctl vacuum, disk benchmarks
-│   ├── 05-security-auditing.md         # SUID audit, getcap, failed SSH logins
-│   └── 06-text-data-streams.md         # awk histograms, xargs -P parallelization, jq, column
+│   ├── 03-networking-sockets.md        # ss, curl waterfall, tcpdump, mtr, dns
+│   ├── 04-storage-filesystems.md       # Inodes, large files, journalctl vacuum, pv, shred
+│   ├── 05-security-auditing.md         # SUID audit, getcap, chattr +i, failed SSH logins
+│   ├── 06-text-data-streams.md         # awk histograms, xargs -P, /dev/urandom, comm
+│   └── 07-performance-kernel.md        # renice, taskset, dirty memory, pidstat, sysctl
 ├── scripts/
 │   └── build_catalog.py                # Automated parser, validator, and JSON generator
 └── docs/

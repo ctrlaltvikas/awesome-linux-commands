@@ -209,3 +209,141 @@ ps -eo pid,user,rss,pmem,comm --sort=-rss | awk 'NR==1 {printf "%-8s %-12s %-12s
 | `-eo pid,user,rss,pmem,comm` | Extract Process ID, User, Resident Set Size in KB, % Memory, and Command |
 | `--sort=-rss` | Sort by RSS in descending order (highest consumers first) |
 | `awk ...` | Calculates and converts raw KiB column ($3) to Megabytes formatted with a single decimal place |
+
+
+---
+
+### 9. Identify Process Holding a File or Port Open with `fuser`
+
+Find which process has an active file descriptor or mount lock on a specific file, directory, or socket.
+
+<!-- @id: incident-fuser-file -->
+<!-- @name: fuser-file-lock -->
+<!-- @category: Incident Response -->
+<!-- @risk: Safe -->
+<!-- @privilege: Sudo -->
+<!-- @tags: files, locks, fuser, triage -->
+
+```bash
+sudo fuser -v /var/log/nginx/access.log
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-v` | Verbose mode: displays PID, user, process name, and access type (`m` mmap, `f` open file, `r` root dir) |
+
+---
+
+### 10. Trace Relative Syscall Latency on Frozen Processes
+
+Measure time elapsed between system calls to identify which kernel syscall is stalling an application.
+
+<!-- @id: incident-strace-latency -->
+<!-- @name: strace-relative-latency -->
+<!-- @category: Incident Response -->
+<!-- @risk: Mutating -->
+<!-- @privilege: Sudo -->
+<!-- @tags: performance, strace, latency, debugging -->
+
+```bash
+sudo strace -r -p 1234
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-r` | Print relative timestamp (microseconds elapsed since previous system call) |
+| `-p 1234` | Attach directly to running Process ID |
+
+---
+
+### 11. Inspect Runtime Resource Limits of a Process
+
+Check soft and hard limits for open file descriptors (`Max open files`), memory, and pending signals on a live process.
+
+<!-- @id: incident-proc-limits -->
+<!-- @name: proc-pid-limits -->
+<!-- @category: Incident Response -->
+<!-- @risk: Safe -->
+<!-- @privilege: Normal -->
+<!-- @tags: process, limits, ulimit, ulimit-exceeded -->
+
+```bash
+cat /proc/1234/limits | grep -E 'Max open files|Max processes|Limit'
+```
+
+#### Why Run This
+When applications crash with `Too many open files`, this command confirms whether the daemon inherited systemd's limits or hit its configured ceiling.
+
+---
+
+### 12. Diagnose Storage Queue Saturation & I/O Latency
+
+Measure disk response latency (`await`), queue backlog (`aqu-sz`), and device utilization percentage (`%util`).
+
+<!-- @id: incident-iostat-latency -->
+<!-- @name: iostat-disk-latency -->
+<!-- @category: Incident Response -->
+<!-- @risk: Safe -->
+<!-- @privilege: Normal -->
+<!-- @tags: storage, disk, iostat, latency, performance -->
+
+```bash
+iostat -xz 1 3
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-x` | Extended statistics: shows queue size, await latency, and service times |
+| `-z` | Suppress output for devices that had zero activity during the sample |
+| `1 3` | Sample every 1 second, repeat 3 times |
+
+---
+
+### 13. Audit System Reboot History & Kernel Crashes
+
+Display full calendar timestamps of past system reboots, crashes, and unexpected shutdowns.
+
+<!-- @id: incident-last-reboots -->
+<!-- @name: last-reboot-history -->
+<!-- @category: Incident Response -->
+<!-- @risk: Safe -->
+<!-- @privilege: Normal -->
+<!-- @tags: system, reboot, crash, uptime, forensics -->
+
+```bash
+last reboot -F -n 5
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-F` | Print full floating-point dates and times including year and seconds |
+| `-n 5` | Limit output to the 5 most recent reboot events |
+
+---
+
+### 14. Query Priority 3 (Errors & Critical) Logs from Current Boot
+
+Filter systemd journal strictly to errors, critical alerts, and emergencies from the active boot session.
+
+<!-- @id: incident-journal-errors -->
+<!-- @name: journalctl-current-errors -->
+<!-- @category: Incident Response -->
+<!-- @risk: Safe -->
+<!-- @privilege: Sudo -->
+<!-- @tags: logs, systemd, errors, triage -->
+
+```bash
+sudo journalctl -p 3 -xb --no-pager
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-p 3` | Filter log priority level 3 (`err`), 2 (`crit`), 1 (`alert`), and 0 (`emerg`) |
+| `-x` | Append explanatory help text and catalog descriptions to known errors |
+| `-b` | Restrict search to the current boot session only |
+| `--no-pager` | Print directly to standard output without piping to `less` |

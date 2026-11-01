@@ -129,3 +129,119 @@ dd if=/dev/zero of=./speedtest.tmp bs=1M count=1024 conv=fdatasync status=progre
 | `bs=1M count=1024` | Write a total of 1 Gigabyte using 1 Megabyte chunk blocks |
 | `conv=fdatasync` | Forces physical flush of data to disk before completing benchmark (eliminates RAM cache distortion) |
 | `status=progress` | Display real-time MB/s throughput speed indicator |
+
+
+---
+
+### 6. Monitor Data Pipe Progress with Visual Progress Bar (`pv`)
+
+Add real-time throughput metrics, elapsed time, total transfer percentage, and ETA to any Unix pipeline.
+
+<!-- @id: storage-pv-progress -->
+<!-- @name: pv-pipe-progress -->
+<!-- @category: Storage -->
+<!-- @risk: Safe -->
+<!-- @privilege: Normal -->
+<!-- @tags: storage, pipeline, progress, pv -->
+
+```bash
+pv database.sql | gzip -9 > database.sql.gz
+```
+
+#### Why Run This
+When piping gigabytes of data through `gzip`, `dd`, or `mysql`, standard Unix tools give zero visual feedback. `pv` (Pipe Viewer) wraps the stream with a dynamic progress bar and MB/s throughput display.
+
+---
+
+### 7. Securely Shred & Overwrite Sensitive Files
+
+Cryptographically destroy sensitive tokens, SSH private keys, or passwords by overwriting them with random data passes before unlinking.
+
+<!-- @id: storage-shred-wipe -->
+<!-- @name: shred-secure-delete -->
+<!-- @category: Storage -->
+<!-- @risk: Destructive -->
+<!-- @privilege: Normal -->
+<!-- @tags: storage, security, shred, wiping -->
+
+```bash
+shred -u -z -n 3 secret.key
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-u` | Truncate and remove the file after overwriting |
+| `-z` | Add a final overwrite pass with zeros (`0x00`) to hide shredding signatures |
+| `-n 3` | Overwrite file contents 3 times with cryptographic pseudo-random data |
+
+---
+
+### 8. Find and Audit Empty Files & Directories
+
+Identify zero-byte files created by failed software builds or stalled application runs.
+
+<!-- @id: storage-find-empty -->
+<!-- @name: find-empty-files -->
+<!-- @category: Storage -->
+<!-- @risk: Safe -->
+<!-- @privilege: Normal -->
+<!-- @tags: storage, files, cleanup, find -->
+
+```bash
+find . -type f -empty -not -path '*/.git/*'
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-type f` | Search exclusively for regular files |
+| `-empty` | Match files that contain 0 bytes |
+| `-not -path ...` | Exclude Git metadata directory |
+
+---
+
+### 9. Emergency Remount of Read-Only Root Filesystem
+
+Recover from filesystem errors that caused the Linux kernel to drop the root partition into read-only mode (`EROFS`).
+
+<!-- @id: storage-remount-rw -->
+<!-- @name: mount-remount-rw -->
+<!-- @category: Storage -->
+<!-- @risk: Mutating -->
+<!-- @privilege: Sudo -->
+<!-- @tags: storage, recovery, mount, kernel -->
+
+```bash
+sudo mount -o remount,rw /
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-o remount,rw` | Instruct the kernel VFS layer to switch the existing mount to read-write mode |
+| `/` | Mount point target |
+
+---
+
+### 10. Audit NVMe SSD Health & Remaining Wear Life
+
+Query the NVMe drive controller for temperature, spare capacity, and percentage of endurance consumed (wear indicator).
+
+<!-- @id: storage-nvme-smart -->
+<!-- @name: nvme-smart-log -->
+<!-- @category: Storage -->
+<!-- @risk: Safe -->
+<!-- @privilege: Sudo -->
+<!-- @tags: storage, nvme, ssd, hardware, health -->
+
+```bash
+sudo nvme smart-log /dev/nvme0n1 | grep -E 'percentage_used|critical_warning|temperature'
+```
+
+#### Flag Breakdown
+| Element | Description |
+| :--- | :--- |
+| `smart-log` | Retrieves SMART / Health Information log page from drive firmware |
+| `/dev/nvme0n1` | NVMe controller and namespace path |
+| `grep ...` | Extracts drive temperature and hardware endurance wear percentage |

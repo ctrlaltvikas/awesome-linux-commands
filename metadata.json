@@ -216,6 +216,114 @@
     "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
   },
   {
+    "id": "modern-hyperfine",
+    "name": "hyperfine",
+    "title": "`hyperfine` — Statistical Benchmarking Replacement for `time`",
+    "category": "Modern CLI",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": "time",
+    "command": "hyperfine --warmup 3 'fd -e md' 'find . -name \"*.md\"'",
+    "description": "",
+    "tags": [
+      "rust",
+      "benchmark",
+      "performance",
+      "profiling"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "modern-bandwhich",
+    "name": "bandwhich",
+    "title": "`bandwhich` — Terminal Bandwidth Utilization Replacement for `iftop`",
+    "category": "Modern CLI",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": "iftop",
+    "command": "sudo bandwhich --show-dns",
+    "description": "",
+    "tags": [
+      "rust",
+      "networking",
+      "bandwidth",
+      "process"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "modern-gdu",
+    "name": "gdu",
+    "title": "`gdu` — Fast Interactive Disk Usage Analyzer Replacement for `ncdu`",
+    "category": "Modern CLI",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": "ncdu",
+    "command": "gdu -d /var",
+    "description": "",
+    "tags": [
+      "go",
+      "storage",
+      "disk",
+      "interactive"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "modern-sd",
+    "name": "sd",
+    "title": "`sd` — Intuitive Find & Replace Replacement for `sed`",
+    "category": "Modern CLI",
+    "risk": "Mutating",
+    "privilege": "Normal",
+    "replaces": "sed",
+    "command": "sd 'https://api.old.com' 'https://api.new.com' config.json",
+    "description": "",
+    "tags": [
+      "rust",
+      "text",
+      "regex",
+      "search-replace"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "modern-doggo",
+    "name": "doggo",
+    "title": "`doggo` — Human-Friendly, Colored DNS Client Replacement for `dig`",
+    "category": "Modern CLI",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": "dig",
+    "command": "doggo A github.com @1.1.1.1 --time",
+    "description": "",
+    "tags": [
+      "go",
+      "dns",
+      "networking",
+      "colored"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
+    "id": "modern-ouch",
+    "name": "ouch",
+    "title": "`ouch` — Painless Universal Compression Tool Replacement for `tar`",
+    "category": "Modern CLI",
+    "risk": "Mutating",
+    "privilege": "Normal",
+    "replaces": "tar",
+    "command": "ouch decompress archive.tar.gz",
+    "description": "",
+    "tags": [
+      "rust",
+      "compression",
+      "archives",
+      "universal"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/01-modern-replacements.md"
+  },
+  {
     "id": "incident-deleted-files",
     "name": "lsof-deleted-files",
     "title": "Identify \"Ghost\" Deleted Files Holding 100% Disk Space",
@@ -363,6 +471,116 @@
     "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/02-incident-response.md"
   },
   {
+    "id": "incident-fuser-file",
+    "name": "fuser-file-lock",
+    "title": "Identify Process Holding a File or Port Open with `fuser`",
+    "category": "Incident Response",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo fuser -v /var/log/nginx/access.log",
+    "description": "Find which process has an active file descriptor or mount lock on a specific file, directory, or socket.",
+    "tags": [
+      "files",
+      "locks",
+      "fuser",
+      "triage"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/02-incident-response.md"
+  },
+  {
+    "id": "incident-strace-latency",
+    "name": "strace-relative-latency",
+    "title": "Trace Relative Syscall Latency on Frozen Processes",
+    "category": "Incident Response",
+    "risk": "Mutating",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo strace -r -p 1234",
+    "description": "Measure time elapsed between system calls to identify which kernel syscall is stalling an application.",
+    "tags": [
+      "performance",
+      "strace",
+      "latency",
+      "debugging"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/02-incident-response.md"
+  },
+  {
+    "id": "incident-proc-limits",
+    "name": "proc-pid-limits",
+    "title": "Inspect Runtime Resource Limits of a Process",
+    "category": "Incident Response",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "cat /proc/1234/limits | grep -E 'Max open files|Max processes|Limit'",
+    "description": "Check soft and hard limits for open file descriptors (`Max open files`), memory, and pending signals on a live process.",
+    "tags": [
+      "process",
+      "limits",
+      "ulimit",
+      "ulimit-exceeded"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/02-incident-response.md"
+  },
+  {
+    "id": "incident-iostat-latency",
+    "name": "iostat-disk-latency",
+    "title": "Diagnose Storage Queue Saturation & I/O Latency",
+    "category": "Incident Response",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "iostat -xz 1 3",
+    "description": "Measure disk response latency (`await`), queue backlog (`aqu-sz`), and device utilization percentage (`%util`).",
+    "tags": [
+      "storage",
+      "disk",
+      "iostat",
+      "latency",
+      "performance"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/02-incident-response.md"
+  },
+  {
+    "id": "incident-last-reboots",
+    "name": "last-reboot-history",
+    "title": "Audit System Reboot History & Kernel Crashes",
+    "category": "Incident Response",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "last reboot -F -n 5",
+    "description": "Display full calendar timestamps of past system reboots, crashes, and unexpected shutdowns.",
+    "tags": [
+      "system",
+      "reboot",
+      "crash",
+      "uptime",
+      "forensics"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/02-incident-response.md"
+  },
+  {
+    "id": "incident-journal-errors",
+    "name": "journalctl-current-errors",
+    "title": "Query Priority 3 (Errors & Critical) Logs from Current Boot",
+    "category": "Incident Response",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo journalctl -p 3 -xb --no-pager",
+    "description": "Filter systemd journal strictly to errors, critical alerts, and emergencies from the active boot session.",
+    "tags": [
+      "logs",
+      "systemd",
+      "errors",
+      "triage"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/02-incident-response.md"
+  },
+  {
     "id": "net-ss-summary",
     "name": "ss-summary",
     "title": "High-Level Socket State Distribution & Connection Backlogs",
@@ -492,6 +710,115 @@
     "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/03-networking-sockets.md"
   },
   {
+    "id": "net-bash-tcp-check",
+    "name": "bash-tcp-test",
+    "title": "Pure Bash Remote TCP Port Reachability Check",
+    "category": "Networking",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "timeout 2 bash -c '</dev/tcp/1.1.1.1/443' && echo \"PORT OPEN\" || echo \"PORT CLOSED\"",
+    "description": "Test if a remote host and TCP port is reachable and accepting connections using pure Bash with zero external dependencies (`nc`, `telnet`, or `nmap` not required).",
+    "tags": [
+      "networking",
+      "bash",
+      "port-check",
+      "connectivity"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/03-networking-sockets.md"
+  },
+  {
+    "id": "net-openssl-cert-expiry",
+    "name": "openssl-cert-dates",
+    "title": "Query Remote TLS / SSL Certificate Expiration Dates",
+    "category": "Networking",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "echo | openssl s_client -connect github.com:443 -servername github.com 2>/dev/null | openssl x509 -noout -dates",
+    "description": "Extract the exact activation and expiry dates of a remote HTTPS certificate directly from the command line without opening a browser.",
+    "tags": [
+      "networking",
+      "tls",
+      "ssl",
+      "certificates",
+      "openssl"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/03-networking-sockets.md"
+  },
+  {
+    "id": "net-tcpdump-dns",
+    "name": "tcpdump-dns-sniffer",
+    "title": "Real-Time DNS Query Packet Sniffer",
+    "category": "Networking",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo tcpdump -nn -i any -c 20 udp port 53",
+    "description": "Capture outbound and inbound DNS lookup queries on port 53 to diagnose unresolved domain lookups or misconfigured DNS servers.",
+    "tags": [
+      "networking",
+      "dns",
+      "packet-capture",
+      "tcpdump"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/03-networking-sockets.md"
+  },
+  {
+    "id": "net-python-http-server",
+    "name": "python-http-server",
+    "title": "Instant Zero-Config HTTP Static File Server",
+    "category": "Networking",
+    "risk": "Mutating",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "python3 -m http.server 8080 --bind 127.0.0.1",
+    "description": "Serve the current working directory over local HTTP for rapid file sharing or local web development.",
+    "tags": [
+      "networking",
+      "http",
+      "python",
+      "web-server"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/03-networking-sockets.md"
+  },
+  {
+    "id": "net-flush-dns-cache",
+    "name": "resolvectl-flush-cache",
+    "title": "Flush Local DNS Resolver Cache",
+    "category": "Networking",
+    "risk": "Mutating",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo resolvectl flush-caches",
+    "description": "Force local `systemd-resolved` to purge cached DNS entries and immediately re-query authoritative nameservers.",
+    "tags": [
+      "networking",
+      "dns",
+      "cache",
+      "systemd-resolved"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/03-networking-sockets.md"
+  },
+  {
+    "id": "net-curl-public-ip",
+    "name": "curl-public-ip",
+    "title": "Query Public IPv4 Address with Zero HTML Bloat",
+    "category": "Networking",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "curl -s4 https://ifconfig.me",
+    "description": "Retrieve your public-facing WAN IP address cleanly for automation scripts or CLI inspection.",
+    "tags": [
+      "networking",
+      "ip",
+      "curl",
+      "public-ip"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/03-networking-sockets.md"
+  },
+  {
     "id": "storage-inode-audit",
     "name": "inode-exhaustion-audit",
     "title": "Diagnose & Trace Inode Exhaustion",
@@ -582,6 +909,97 @@
     "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/04-storage-filesystems.md"
   },
   {
+    "id": "storage-pv-progress",
+    "name": "pv-pipe-progress",
+    "title": "Monitor Data Pipe Progress with Visual Progress Bar (`pv`)",
+    "category": "Storage",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "pv database.sql | gzip -9 > database.sql.gz",
+    "description": "Add real-time throughput metrics, elapsed time, total transfer percentage, and ETA to any Unix pipeline.",
+    "tags": [
+      "storage",
+      "pipeline",
+      "progress",
+      "pv"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/04-storage-filesystems.md"
+  },
+  {
+    "id": "storage-shred-wipe",
+    "name": "shred-secure-delete",
+    "title": "Securely Shred & Overwrite Sensitive Files",
+    "category": "Storage",
+    "risk": "Destructive",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "shred -u -z -n 3 secret.key",
+    "description": "Cryptographically destroy sensitive tokens, SSH private keys, or passwords by overwriting them with random data passes before unlinking.",
+    "tags": [
+      "storage",
+      "security",
+      "shred",
+      "wiping"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/04-storage-filesystems.md"
+  },
+  {
+    "id": "storage-find-empty",
+    "name": "find-empty-files",
+    "title": "Find and Audit Empty Files & Directories",
+    "category": "Storage",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "find . -type f -empty -not -path '*/.git/*'",
+    "description": "Identify zero-byte files created by failed software builds or stalled application runs.",
+    "tags": [
+      "storage",
+      "files",
+      "cleanup",
+      "find"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/04-storage-filesystems.md"
+  },
+  {
+    "id": "storage-remount-rw",
+    "name": "mount-remount-rw",
+    "title": "Emergency Remount of Read-Only Root Filesystem",
+    "category": "Storage",
+    "risk": "Mutating",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo mount -o remount,rw /",
+    "description": "Recover from filesystem errors that caused the Linux kernel to drop the root partition into read-only mode (`EROFS`).",
+    "tags": [
+      "storage",
+      "recovery",
+      "mount",
+      "kernel"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/04-storage-filesystems.md"
+  },
+  {
+    "id": "storage-nvme-smart",
+    "name": "nvme-smart-log",
+    "title": "Audit NVMe SSD Health & Remaining Wear Life",
+    "category": "Storage",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo nvme smart-log /dev/nvme0n1 | grep -E 'percentage_used|critical_warning|temperature'",
+    "description": "Query the NVMe drive controller for temperature, spare capacity, and percentage of endurance consumed (wear indicator).",
+    "tags": [
+      "storage",
+      "nvme",
+      "ssd",
+      "hardware",
+      "health"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/04-storage-filesystems.md"
+  },
+  {
     "id": "sec-find-suid",
     "name": "find-suid-binaries",
     "title": "Audit SUID and SGID Executables",
@@ -650,6 +1068,96 @@
       "permissions",
       "chmod",
       "hardening"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/05-security-auditing.md"
+  },
+  {
+    "id": "sec-chattr-immutable",
+    "name": "chattr-immutable",
+    "title": "Make Critical Configuration Files Immutable Against Root Deletion",
+    "category": "Security",
+    "risk": "Mutating",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo chattr +i /etc/resolv.conf",
+    "description": "Prevent accidental modification or deletion of vital system files (like `/etc/resolv.conf` or `/etc/passwd`) by setting the filesystem immutable flag. Even `root` running `rm -rf` cannot delete or overwrite it.",
+    "tags": [
+      "security",
+      "permissions",
+      "chattr",
+      "hardening"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/05-security-auditing.md"
+  },
+  {
+    "id": "sec-lsattr-check",
+    "name": "lsattr-inspect",
+    "title": "Inspect Extended Filesystem Attributes (`lsattr`)",
+    "category": "Security",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "lsattr /etc/passwd /etc/shadow /etc/resolv.conf",
+    "description": "Check which files have special kernel filesystem flags set (e.g., `i` immutable, `a` append-only).",
+    "tags": [
+      "security",
+      "permissions",
+      "lsattr",
+      "audit"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/05-security-auditing.md"
+  },
+  {
+    "id": "sec-find-nouser",
+    "name": "find-orphaned-files",
+    "title": "Audit Orphaned Files Belonging to Deleted Users/Groups",
+    "category": "Security",
+    "risk": "Safe",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo find / -xdev \\( -nouser -o -nogroup \\) -exec ls -ld {} + 2>/dev/null",
+    "description": "Locate files whose UID or GID no longer exists in `/etc/passwd` or `/etc/group` (security risk if a new user is assigned that UID).",
+    "tags": [
+      "security",
+      "permissions",
+      "audit",
+      "users"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/05-security-auditing.md"
+  },
+  {
+    "id": "sec-lock-user-session",
+    "name": "lock-user-account",
+    "title": "Emergency User Account Lockout & Active Session Termination",
+    "category": "Security",
+    "risk": "Mutating",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo passwd -l compromised_user && sudo pkill -9 -u compromised_user",
+    "description": "Instantly lock a compromised user's password and terminate all of their running processes and interactive SSH shells.",
+    "tags": [
+      "security",
+      "auth",
+      "incident-response",
+      "users"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/05-security-auditing.md"
+  },
+  {
+    "id": "sec-w-users",
+    "name": "w-active-users",
+    "title": "Real-Time Inspection of Logged-In Users & Commands (`w`)",
+    "category": "Security",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "w -f",
+    "description": "View who is currently logged into the system, their originating IP address, idle duration, and the command their terminal is currently executing.",
+    "tags": [
+      "security",
+      "users",
+      "sessions",
+      "w"
     ],
     "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/05-security-auditing.md"
   },
@@ -725,5 +1233,188 @@
       "api"
     ],
     "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/06-text-data-streams.md"
+  },
+  {
+    "id": "text-gen-password",
+    "name": "urandom-password-gen",
+    "title": "Generate Cryptographically Secure Passwords from `/dev/urandom`",
+    "category": "Text & Streams",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "tr -dc 'A-Za-z0-9!@#$%^&*()_+' < /dev/urandom | head -c 24; echo",
+    "description": "Create a 24-character high-entropy alphanumeric password with special characters without installing third-party utilities.",
+    "tags": [
+      "text",
+      "security",
+      "random",
+      "password",
+      "urandom"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/06-text-data-streams.md"
+  },
+  {
+    "id": "text-tail-color-grep",
+    "name": "tail-colored-grep",
+    "title": "Live Log Tail with Real-Time Colorized Keyword Highlighting",
+    "category": "Text & Streams",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "tail -f /var/log/syslog | grep --line-buffered -E --color=always 'error|fail|crit|exception|$'",
+    "description": "Follow a streaming log file while highlighting critical error words without buffering delays.",
+    "tags": [
+      "text",
+      "logs",
+      "streaming",
+      "tail",
+      "grep"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/06-text-data-streams.md"
+  },
+  {
+    "id": "text-comm-intersection",
+    "name": "comm-process-substitution",
+    "title": "Find Common Lines Across Two Lists Without Creating Temp Files",
+    "category": "Text & Streams",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "comm -12 <(sort list_a.txt) <(sort list_b.txt)",
+    "description": "Compute the exact intersection of two unsorted text files using Bash process substitution.",
+    "tags": [
+      "text",
+      "diff",
+      "comm",
+      "set-theory"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/06-text-data-streams.md"
+  },
+  {
+    "id": "text-cut-columns",
+    "name": "cut-field-slicing",
+    "title": "Fast Column Slicing from Delimited CSV/TSV Files",
+    "category": "Text & Streams",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "cut -d',' -f1,3,5 server_metrics.csv",
+    "description": "Extract specific fields rapidly without the overhead of heavy scripting runtimes.",
+    "tags": [
+      "text",
+      "cut",
+      "csv",
+      "data"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/06-text-data-streams.md"
+  },
+  {
+    "id": "perf-renice-process",
+    "name": "renice-priority",
+    "title": "Dynamically Adjust Process Scheduling Priority (`renice`)",
+    "category": "Performance & Kernel",
+    "risk": "Mutating",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo renice -n -5 -p 1234",
+    "description": "Increase or decrease the CPU scheduling priority of a running process without restarting it.",
+    "tags": [
+      "performance",
+      "cpu",
+      "scheduling",
+      "renice"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/07-performance-kernel.md"
+  },
+  {
+    "id": "perf-taskset-affinity",
+    "name": "taskset-cpu-affinity",
+    "title": "Pin Process Execution to Specific CPU Cores (`taskset`)",
+    "category": "Performance & Kernel",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "taskset -c 0,1 nginx -g \"daemon off;\"",
+    "description": "Enforce CPU core affinity to prevent context-switching overhead and cache bouncing on multi-core NUMA systems.",
+    "tags": [
+      "performance",
+      "cpu",
+      "affinity",
+      "numa",
+      "taskset"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/07-performance-kernel.md"
+  },
+  {
+    "id": "perf-proc-dirty-memory",
+    "name": "proc-dirty-memory",
+    "title": "Inspect Kernel Dirty Memory Pages Waiting on Disk Flush",
+    "category": "Performance & Kernel",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "cat /proc/meminfo | grep -E 'Dirty|Writeback|AnonPages'",
+    "description": "Determine how many megabytes of unwritten memory data are currently backed up in RAM waiting to be committed to disk.",
+    "tags": [
+      "memory",
+      "performance",
+      "dirty-pages",
+      "kernel"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/07-performance-kernel.md"
+  },
+  {
+    "id": "perf-pidstat-cpu",
+    "name": "pidstat-cpu-breakdown",
+    "title": "Per-Process CPU Utilization Breakdown with `pidstat`",
+    "category": "Performance & Kernel",
+    "risk": "Safe",
+    "privilege": "Normal",
+    "replaces": null,
+    "command": "pidstat -u 1 3",
+    "description": "Monitor real-time user-space (`%usr`) vs kernel-space (`%system`) CPU consumption across individual processes.",
+    "tags": [
+      "performance",
+      "cpu",
+      "pidstat",
+      "sysstat"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/07-performance-kernel.md"
+  },
+  {
+    "id": "perf-sysctl-reload",
+    "name": "sysctl-reload",
+    "title": "Apply Linux Kernel Runtime Parameters Without Rebooting",
+    "category": "Performance & Kernel",
+    "risk": "Mutating",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sudo sysctl -p /etc/sysctl.conf",
+    "description": "Instantly reload sysctl parameters from `/etc/sysctl.conf` into the active Linux kernel.",
+    "tags": [
+      "kernel",
+      "sysctl",
+      "performance",
+      "tuning"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/07-performance-kernel.md"
+  },
+  {
+    "id": "perf-drop-caches",
+    "name": "drop-caches-safe",
+    "title": "Safely Release Inactive Page Cache, Dentries & Inodes",
+    "category": "Performance & Kernel",
+    "risk": "Mutating",
+    "privilege": "Sudo",
+    "replaces": null,
+    "command": "sync && echo 3 | sudo tee /proc/sys/vm/drop_caches",
+    "description": "Force cached read data and directory structures to be freed from RAM without dropping dirty data.",
+    "tags": [
+      "memory",
+      "cache",
+      "drop_caches",
+      "performance"
+    ],
+    "source_file": "/Users/vikasyadav/Documents/GitHub/awesome-linux-commands/commands/07-performance-kernel.md"
   }
 ]

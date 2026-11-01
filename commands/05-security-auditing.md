@@ -96,3 +96,117 @@ sudo find /etc /opt /var/www -type f -perm -0002 -ls
 | :--- | :--- |
 | `-perm -0002` | Match files where the "others" write permission bit is enabled |
 | `-ls` | Print detailed file mode, owner, group, and size |
+
+
+---
+
+### 5. Make Critical Configuration Files Immutable Against Root Deletion
+
+Prevent accidental modification or deletion of vital system files (like `/etc/resolv.conf` or `/etc/passwd`) by setting the filesystem immutable flag. Even `root` running `rm -rf` cannot delete or overwrite it.
+
+<!-- @id: sec-chattr-immutable -->
+<!-- @name: chattr-immutable -->
+<!-- @category: Security -->
+<!-- @risk: Mutating -->
+<!-- @privilege: Sudo -->
+<!-- @tags: security, permissions, chattr, hardening -->
+
+```bash
+sudo chattr +i /etc/resolv.conf
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `+i` | Set immutable attribute: file cannot be modified, overwritten, truncated, renamed, or unlinked |
+
+#### To Remove Immutability Later:
+```bash
+sudo chattr -i /etc/resolv.conf
+```
+
+---
+
+### 6. Inspect Extended Filesystem Attributes (`lsattr`)
+
+Check which files have special kernel filesystem flags set (e.g., `i` immutable, `a` append-only).
+
+<!-- @id: sec-lsattr-check -->
+<!-- @name: lsattr-inspect -->
+<!-- @category: Security -->
+<!-- @risk: Safe -->
+<!-- @privilege: Normal -->
+<!-- @tags: security, permissions, lsattr, audit -->
+
+```bash
+lsattr /etc/passwd /etc/shadow /etc/resolv.conf
+```
+
+---
+
+### 7. Audit Orphaned Files Belonging to Deleted Users/Groups
+
+Locate files whose UID or GID no longer exists in `/etc/passwd` or `/etc/group` (security risk if a new user is assigned that UID).
+
+<!-- @id: sec-find-nouser -->
+<!-- @name: find-orphaned-files -->
+<!-- @category: Security -->
+<!-- @risk: Safe -->
+<!-- @privilege: Sudo -->
+<!-- @tags: security, permissions, audit, users -->
+
+```bash
+sudo find / -xdev \( -nouser -o -nogroup \) -exec ls -ld {} + 2>/dev/null
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-nouser` | File owner UID has no corresponding entry in `/etc/passwd` |
+| `-nogroup` | File group GID has no corresponding entry in `/etc/group` |
+| `-xdev` | Restrict audit to current mounted filesystem |
+
+---
+
+### 8. Emergency User Account Lockout & Active Session Termination
+
+Instantly lock a compromised user's password and terminate all of their running processes and interactive SSH shells.
+
+<!-- @id: sec-lock-user-session -->
+<!-- @name: lock-user-account -->
+<!-- @category: Security -->
+<!-- @risk: Mutating -->
+<!-- @privilege: Sudo -->
+<!-- @tags: security, auth, incident-response, users -->
+
+```bash
+sudo passwd -l compromised_user && sudo pkill -9 -u compromised_user
+```
+
+#### Flag Breakdown
+| Command / Flag | Description |
+| :--- | :--- |
+| `passwd -l` | Lock user password hash in `/etc/shadow` (prepends `!` to hash) |
+| `pkill -9 -u` | Immediately send `SIGKILL` to all processes owned by the specified user |
+
+---
+
+### 9. Real-Time Inspection of Logged-In Users & Commands (`w`)
+
+View who is currently logged into the system, their originating IP address, idle duration, and the command their terminal is currently executing.
+
+<!-- @id: sec-w-users -->
+<!-- @name: w-active-users -->
+<!-- @category: Security -->
+<!-- @risk: Safe -->
+<!-- @privilege: Normal -->
+<!-- @tags: security, users, sessions, w -->
+
+```bash
+w -f
+```
+
+#### Flag Breakdown
+| Flag | Description |
+| :--- | :--- |
+| `-f` | Toggle display of the remote "From" column (displays originating client IP or hostname) |
